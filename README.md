@@ -25,3 +25,7 @@ import { ISteamUser } from "steam-webapi-ts"
 const usersApi = new ISteamUser("api_key")
 console.log(await usersApi.getPlayerSummaries(["steam_ids"]))
 ```
+
+## Docs
+
+Read the documentation [here](https://jduabe.dev/steam-webapi-ts/)

@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/j4ckofalltrades/steam-webapi-ts.git"
   },
-  "author": "Jordan Duabe",
+  "author": "Jordan Duabe <me@jduabe.dev> (https://jduabe.dev)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/j4ckofalltrades/steam-webapi-ts/issues"
@@ -26,6 +26,7 @@
     "index.ts",
     "src/api/"
   ],
+  "keywords": ["steam", "webapi"],
   "dependencies": {
     "axios": "^0.21.1",
     "typescript": "4.2.4"
