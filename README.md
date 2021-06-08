@@ -34,4 +34,4 @@ console.log(await usersApi.getPlayerSummaries(["steam_ids"]))
 
 ## Docs
 
-Read the documentation [here](https://jduabe.dev/steam-webapi-ts/)
+Read the documentation [here](https://j4ckofalltrades.github.io/steam-webapi-ts/)
