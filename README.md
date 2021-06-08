@@ -1,4 +1,6 @@
 # steam-webapi-ts
+[![npm](https://img.shields.io/npm/v/steam-webapi-ts)](https://npmjs.com/package/steam-webapi-ts)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/j4ckofalltrades/steam-webapi-ts/typescript)
 
 A Typescript wrapper for Steam's Web API.
 
@@ -6,7 +8,11 @@ A Typescript wrapper for Steam's Web API.
 
 ### Using npm
 
-`$ npm install steam-webapi-ts`
+[![NPM](https://nodei.co/npm/steam-webapi-ts.png)](https://npmjs.com/package/steam-webapi-ts/)
+
+### Using yarn
+
+`$ yarn add steam-webapi-ts`
 
 ## Usage
 
