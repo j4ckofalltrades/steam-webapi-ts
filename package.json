@@ -1,9 +1,9 @@
 {
   "name": "steam-webapi-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Typescript wrapper for Steam's Web API",
   "main": "src/index.ts",
-  "types": "./dist/index.d.ts",
+  "types": "dist",
   "scripts": {
     "build": "tsc",
     "pretest": "npm run lint",
@@ -27,9 +27,12 @@
     "LICENSE",
     "index.ts",
     "src/api/",
-    "dist/index.d.ts"
+    "dist"
   ],
-  "keywords": ["steam", "webapi"],
+  "keywords": [
+    "steam",
+    "webapi"
+  ],
   "dependencies": {
     "axios": "^0.21.1",
     "typescript": "4.2.4"
