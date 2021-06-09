@@ -16,6 +16,8 @@ A Typescript wrapper for Steam's Web API.
 
 ## Usage
 
+**This requires a Steam Web API Key, you can get one at https://steamcommunity.com/dev/apikey**
+
 You can use either the provided `SteamWebApi` wrapper, or a specific interface e.g. `ISteamUser`. 
 
 ```typescript
@@ -23,15 +25,17 @@ You can use either the provided `SteamWebApi` wrapper, or a specific interface e
 import { SteamWebApi } from "steam-webapi-ts"
 
 const steamWebApi = new SteamWebApi("api_key")
-console.log(await steamWebApi.usersApi.getPlayerSummaries(["steam_ids"]))
+await steamWebApi.usersApi.getPlayerSummaries(["steam_ids"])
 
 // steam-user-api.ts
 import { ISteamUser } from "steam-webapi-ts"
 
 const usersApi = new ISteamUser("api_key")
-console.log(await usersApi.getPlayerSummaries(["steam_ids"]))
+await usersApi.getPlayerSummaries(["steam_ids"])
 ```
 
 ## Docs
 
 Read the documentation [here](https://j4ckofalltrades.github.io/steam-webapi-ts/)
+
+Read the Steam Web API documentation [here](https://developer.valvesoftware.com/wiki/Steam_Web_API)
