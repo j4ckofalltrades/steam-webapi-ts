@@ -1,5 +1,5 @@
 # steam-webapi-ts
-[![npm](https://img.shields.io/npm/v/steam-webapi-ts)](https://npmjs.com/package/steam-webapi-ts)
+[![npm](https://img.shields.io/npm/v/@j4ckofalltrades\/steam-webapi-ts)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/j4ckofalltrades/steam-webapi-ts/typescript)
 
 A Typescript wrapper for Steam's Web API.
@@ -8,11 +8,18 @@ A Typescript wrapper for Steam's Web API.
 
 ### Using npm
 
-[![NPM](https://nodei.co/npm/steam-webapi-ts.png)](https://npmjs.com/package/steam-webapi-ts/)
+`$ npm install @j4ckofalltrades/steam-webapi-ts`
 
 ### Using yarn
 
-`$ yarn add steam-webapi-ts`
+`$ yarn add @j4ckofalltrades/steam-webapi-ts`
+
+### Using GitHub Packages
+
+This step requires [authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages),
+then installing the package using `npm`.
+
+`$ npm install @j4ckofalltrades/steam-webapi-ts`
 
 ## Usage
 
@@ -22,13 +29,13 @@ You can use either the provided `SteamWebApi` wrapper, or a specific interface e
 
 ```typescript
 // steam-web-api.ts
-import { SteamWebApi } from "steam-webapi-ts"
+import { SteamWebApi } from "@j4ckofalltrades/steam-webapi-ts"
 
 const steamWebApi = new SteamWebApi("api_key")
 await steamWebApi.usersApi.getPlayerSummaries(["steam_ids"])
 
 // steam-user-api.ts
-import { ISteamUser } from "steam-webapi-ts"
+import { ISteamUser } from "@j4ckofalltrades/steam-webapi-ts"
 
 const usersApi = new ISteamUser("api_key")
 await usersApi.getPlayerSummaries(["steam_ids"])
