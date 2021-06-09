@@ -1,4 +1,4 @@
-name: Publish package to npm
+name: Publish package to npm and GitHub Packages
 
 on:
   release:
@@ -7,23 +7,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - run: npm test
       - run: npm run build
-      - run: npm publish
+      # Publish to npm
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
           scope: '@j4ckofalltrades'
       # Publish to GitHub Packages
       - run: npm publish
