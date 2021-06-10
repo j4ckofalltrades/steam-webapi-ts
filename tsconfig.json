@@ -3,9 +3,7 @@
   "include": ["src/index.ts", "src/api"],
   "compilerOptions": {
     "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist"
+    "moduleResolution": "node"
   },
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],

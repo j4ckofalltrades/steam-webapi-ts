@@ -1,11 +1,15 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Typescript wrapper for Steam's Web API",
-  "main": "src/index.ts",
-  "types": "dist",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:esm": "tsc --module es2015 --target es5 --outDir esm",
+    "build:cjs": "tsc --module commonjs --target es5 --outDir cjs",
+    "build:types": "tsc --emitDeclarationOnly true --declaration true --target es5 --outDir types",
     "pretest": "npm run lint",
     "test": "jest --no-cache",
     "lint": "eslint src/",
@@ -25,9 +29,9 @@
   "files": [
     "README.md",
     "LICENSE",
-    "index.ts",
-    "src/api/",
-    "dist"
+    "cjs",
+    "esm",
+    "types"
   ],
   "keywords": [
     "steam",
