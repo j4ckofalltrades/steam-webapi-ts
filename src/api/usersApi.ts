@@ -1,6 +1,6 @@
-import { FriendList, FriendRelationship, PlayerSummaries, SteamId, WebApiKey } from "./types"
+import { FriendList, FriendRelationship, PlayerBans, PlayerSummaries, SteamId, WebApiKey } from "./types"
 import { httpClient, HttpClient } from "./http"
-import { GET_FRIEND_LIST, GET_PLAYER_SUMMARIES } from "./url"
+import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES } from "./url"
 
 /**
  * Methods relating to Steam users.
@@ -13,22 +13,6 @@ export class ISteamUser {
   constructor(apiKey: WebApiKey, http: HttpClient = httpClient) {
     this.apiKey = apiKey
     this.http = http
-  }
-
-  /**
-   * User profile data
-   *
-   * @param steamids A comma-separated list of 64 bit IDs to retrieve profiles for.
-   */
-  async getPlayerSummaries(steamids: SteamId[]): Promise<PlayerSummaries> {
-    return await this.http.get<PlayerSummaries>(
-      GET_PLAYER_SUMMARIES,
-      {
-        params: {
-          key: this.apiKey,
-          steamids: JSON.stringify(steamids),
-        }
-      })
   }
 
   /**
@@ -45,6 +29,38 @@ export class ISteamUser {
           key: this.apiKey,
           steamid: steamid,
           relationship,
+        }
+      })
+  }
+
+  /**
+   * Player ban/probation status
+   *
+   * @param steamids Comma-delimited list of SteamIDs
+   */
+  async getPlayerBans(steamids: SteamId[]): Promise<PlayerBans> {
+    return await this.http.get<PlayerBans>(
+      GET_PLAYER_BANS,
+      {
+        params: {
+          key: this.apiKey,
+          steamids: JSON.stringify(steamids),
+        }
+      })
+  }
+
+  /**
+   * User profile data
+   *
+   * @param steamids Comma-delimited list of SteamIDs
+   */
+  async getPlayerSummaries(steamids: SteamId[]): Promise<PlayerSummaries> {
+    return await this.http.get<PlayerSummaries>(
+      GET_PLAYER_SUMMARIES,
+      {
+        params: {
+          key: this.apiKey,
+          steamids: JSON.stringify(steamids),
         }
       })
   }

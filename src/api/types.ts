@@ -107,3 +107,26 @@ export type FriendList = {
     friends: Friend[],
   }
 }
+
+/**
+ * @property SteamId A string containing the player's 64 bit ID.
+ * @property CommunityBanned Boolean indicating whether or not the player is banned from Community.
+ * @property VACBanned Boolean indicating whether or not the player has VAC bans on record.
+ * @property NumberOfGameBans Number of bans in games.
+ * @property EconomyBan String containing the player's ban status in the economy. If the player has no bans on
+ *           record the string will be "none", if the player is on probation it will say "probation", and so forth.
+ */
+export type PlayerBan = {
+  SteamId: string,
+  CommunityBanned: boolean,
+  VACBanned: boolean,
+  NumberOfGameBans: boolean,
+  EconomyBan: string,
+}
+
+/**
+ * @property players List of player ban objects for each given (and valid) 64 bit ID.
+ */
+export type PlayerBans = {
+  players: PlayerBan[],
+}

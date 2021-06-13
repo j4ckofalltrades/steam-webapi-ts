@@ -1,7 +1,7 @@
 import { ISteamUser } from "../api/usersApi"
-import { friendsListMock, playerSummariesMock } from "../fixtures/response"
+import { friendsListMock, playerBansMock, playerSummariesMock } from "../fixtures/response"
 import { HttpClient } from "../api/http"
-import { GET_FRIEND_LIST, GET_PLAYER_SUMMARIES } from "../api/url"
+import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES } from "../api/url"
 
 jest.mock("../api/http")
 
@@ -19,28 +19,6 @@ beforeEach(() => {
 
 describe("ISteamUser", () => {
   const { httpMock, api } = setup()
-
-  describe("getPlayerSummaries", () => {
-    beforeEach(() => {
-      HttpClientMock.prototype.get.mockResolvedValue(playerSummariesMock)
-    })
-
-    it("should return playerSummaries", async () => {
-      const steamids = ["1"]
-      const response = await api.getPlayerSummaries(steamids)
-
-      expect(response).toEqual(playerSummariesMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_PLAYER_SUMMARIES,
-        {
-          params: {
-            key: apiKeyTest,
-            steamids: JSON.stringify(steamids),
-          }
-        }
-      )
-    })
-  })
 
   describe("getFriendsList", () => {
     beforeEach(() => {
@@ -60,6 +38,50 @@ describe("ISteamUser", () => {
             key: apiKeyTest,
             steamid,
             relationship,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getPlayerBans", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playerBansMock)
+    })
+
+    it("should return playerBans", async () => {
+      const steamids = ["1"]
+      const response = await api.getPlayerBans(steamids)
+
+      expect(response).toEqual(playerBansMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_PLAYER_BANS,
+        {
+          params: {
+            key: apiKeyTest,
+            steamids: JSON.stringify(steamids),
+          }
+        }
+      )
+    })
+  })
+
+  describe("getPlayerSummaries", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playerSummariesMock)
+    })
+
+    it("should return playerSummaries", async () => {
+      const steamids = ["1"]
+      const response = await api.getPlayerSummaries(steamids)
+
+      expect(response).toEqual(playerSummariesMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_PLAYER_SUMMARIES,
+        {
+          params: {
+            key: apiKeyTest,
+            steamids: JSON.stringify(steamids),
           }
         }
       )

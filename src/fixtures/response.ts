@@ -41,3 +41,17 @@ export const friendsListMock = {
     ]
   }
 }
+
+export const playerBansMock = {
+  players: [
+    {
+      SteamId: "76561197960435530",
+      CommunityBanned: false,
+      VACBanned: false,
+      NumberOfVACBans: 0,
+      DaysSinceLastBan: 0,
+      NumberOfGameBans: 0,
+      EconomyBan: "none",
+    }
+  ]
+}
