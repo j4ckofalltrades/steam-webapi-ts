@@ -24,3 +24,20 @@ export const playerSummariesMock = {
     ]
   }
 }
+
+export const friendsListMock = {
+  friendslist: {
+    friends: [
+      {
+        steamid: "76561197960265740",
+        relationship: "friend",
+        friend_since: 0
+      },
+      {
+        steamid: "76561197960265744",
+        relationship: "friend",
+        friend_since: 1585508613
+      }
+    ]
+  }
+}

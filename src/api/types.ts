@@ -46,7 +46,7 @@ type JsonValue =
  * @property timecreated (Optional) A unix timestamp of the date the profile was created.
  * @property loccountrycode (Optional) ISO 3166 code of where the user is located.
  * @property locstatecode (Optional) Variable length code representing the state the user is located in.
- * @property loccityid (Optional) An integer ID internal to Steam representing the user's city.
+ * @property cityid (Optional) An integer ID internal to Steam representing the user's city.
  * @property gameid (Optional) If the user is in game this will be set to it's app ID as a string.
  * @property gameextrainfo (Optional) The title of the game.
  * @property gameserverip (Optional) The server URL given as an IP address and port number separated by a colon,
@@ -81,5 +81,29 @@ export type PlayerSummary = {
 export type PlayerSummaries = {
   response: {
     players: PlayerSummary[],
+  }
+}
+
+export type FriendRelationship = "all" | "friend"
+
+/**
+ * @property steamid The user's 64 bit ID
+ * @property relationship Role in relation to the given steamid
+ * @property friend_since A unix timestamp of when the friend was added to the list.
+ */
+export type Friend = {
+  steamid: string,
+  relationship: string,
+  friend_since: number,
+}
+
+/**
+ * @property friendslist (Optional) If the profile is not public or there are no available entries for the given
+ *           relationship only an empty object will be returned.
+ * @property friends A list of objects for each list entry.
+ */
+export type FriendList = {
+  friendslist: {
+    friends: Friend[],
   }
 }

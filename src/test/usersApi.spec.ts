@@ -1,7 +1,7 @@
 import { ISteamUser } from "../api/usersApi"
-import { playerSummariesMock } from "../fixtures/response"
+import { friendsListMock, playerSummariesMock } from "../fixtures/response"
 import { HttpClient } from "../api/http"
-import { GET_PLAYER_SUMMARIES } from "../api/url"
+import { GET_FRIEND_LIST, GET_PLAYER_SUMMARIES } from "../api/url"
 
 jest.mock("../api/http")
 
@@ -36,6 +36,30 @@ describe("ISteamUser", () => {
           params: {
             key: apiKeyTest,
             steamids: JSON.stringify(steamids),
+          }
+        }
+      )
+    })
+  })
+
+  describe("getFriendsList", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(friendsListMock)
+    })
+
+    it("should return friendList", async () => {
+      const steamid = "1"
+      const relationship = "friend"
+      const response = await api.getFriendList(steamid, relationship)
+
+      expect(response).toEqual(friendsListMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_FRIEND_LIST,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
+            relationship,
           }
         }
       )
