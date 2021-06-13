@@ -21,20 +21,27 @@ then installing the package using `npm`.
 
 `$ npm install @j4ckofalltrades/steam-webapi-ts`
 
+### via CDN
+
+- jsDelivr [cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/](cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/)
+- unpkg [unpkg.com/browse/@j4ckofalltrades/steam-webapi-ts/](https://unpkg.com/browse/@j4ckofalltrades/steam-webapi-ts/)
+
 ## Usage
 
 **This requires a Steam Web API Key, you can get one at https://steamcommunity.com/dev/apikey**
 
-You can use either the provided `SteamWebApi` wrapper, or a specific interface e.g. `ISteamUser`. 
+You can use either the provided `SteamWebApi` wrapper
 
 ```typescript
-// steam-web-api.ts
 import { SteamWebApi } from "@j4ckofalltrades/steam-webapi-ts"
 
 const steamWebApi = new SteamWebApi("api_key")
 await steamWebApi.usersApi.getPlayerSummaries(["steam_ids"])
+```
 
-// steam-user-api.ts
+or with a specific interface e.g. `ISteamUser`
+
+```typescript
 import { ISteamUser } from "@j4ckofalltrades/steam-webapi-ts"
 
 const usersApi = new ISteamUser("api_key")
