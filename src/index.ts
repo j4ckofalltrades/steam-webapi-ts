@@ -7,6 +7,7 @@ import {
   PlayerSummary,
   UserGroup,
   UserGroups,
+  VanityURLResolved,
 } from "./api/types"
 import { ISteamUser } from "./api/usersApi"
 import { SteamWebApi } from "./api/webApi"
@@ -20,6 +21,7 @@ export type {
   PlayerSummary,
   UserGroup,
   UserGroups,
+  VanityURLResolved,
 }
 export {
   ISteamUser,

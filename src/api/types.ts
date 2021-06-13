@@ -93,7 +93,7 @@ export type FriendRelationship = "all" | "friend"
  */
 export type Friend = {
   steamid: string,
-  relationship: string,
+  relationship: FriendRelationship,
   friend_since: number,
 }
 
@@ -146,5 +146,22 @@ export type UserGroups = {
   response: {
     success: boolean,
     groups: UserGroup[],
+  }
+}
+
+// 1 if successful, 42 if there was no match.
+type VanityURLStatus = 1 | 42
+
+/**
+ * @property success The status of the request. 1 if successful, 42 if there was no match.
+ * @property steamid (Optional) The 64 bit Steam ID the vanity URL resolves to. Not returned on resolution failures.
+ * @property message (Optional) The message associated with the request status. Currently only used on resolution
+ *           failures.
+ */
+export type VanityURLResolved = {
+  response: {
+    success: VanityURLStatus,
+    steamid?: string,
+    message?: string,
   }
 }

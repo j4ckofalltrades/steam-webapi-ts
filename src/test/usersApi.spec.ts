@@ -1,7 +1,19 @@
 import { ISteamUser } from "../api/usersApi"
-import { friendsListMock, playerBansMock, playerSummariesMock, userGroupListMock } from "../fixtures/response"
+import {
+  friendsListMock,
+  playerBansMock,
+  playerSummariesMock,
+  userGroupListMock,
+  vanityURLResolvedMock
+} from "../fixtures/response"
 import { HttpClient } from "../api/http"
-import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_LIST } from "../api/url"
+import {
+  GET_FRIEND_LIST,
+  GET_PLAYER_BANS,
+  GET_PLAYER_SUMMARIES,
+  GET_USER_GROUP_LIST,
+  RESOLVE_VANITY_URL
+} from "../api/url"
 
 jest.mock("../api/http")
 
@@ -104,6 +116,28 @@ describe("ISteamUser", () => {
           params: {
             key: apiKeyTest,
             steamid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("resolveVanityURL", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(vanityURLResolvedMock)
+    })
+
+    it("should return vanityURLResolved", async () => {
+      const vanityurl = "gabelogannewell"
+      const response = await api.resolveVanityURL(vanityurl)
+
+      expect(response).toEqual(vanityURLResolvedMock)
+      expect(httpMock.get).toBeCalledWith(
+        RESOLVE_VANITY_URL,
+        {
+          params: {
+            key: apiKeyTest,
+            vanityurl,
           }
         }
       )

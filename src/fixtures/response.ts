@@ -66,3 +66,10 @@ export const userGroupListMock = {
     ]
   }
 }
+
+export const vanityURLResolvedMock = {
+  response: {
+    steamid: "76561197960435530",
+    success: 1
+  }
+}
