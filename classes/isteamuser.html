@@ -2717,7 +2717,19 @@ img {
 					<a href="isteamuser.html#http" class="tsd-kind-icon">http</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="isteamuser.html#getfriendlist" class="tsd-kind-icon">get<wbr>Friend<wbr>List</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="isteamuser.html#getplayerbans" class="tsd-kind-icon">get<wbr>Player<wbr>Bans</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="isteamuser.html#getplayersummaries" class="tsd-kind-icon">get<wbr>Player<wbr>Summaries</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="isteamuser.html#getusergrouplist" class="tsd-kind-icon">get<wbr>User<wbr>Group<wbr>List</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="isteamuser.html#resolvevanityurl" class="tsd-kind-icon">resolve<wbr>VanityURL</a>
 				</li>
 			</ul>
 		</li>
@@ -2725,10 +2737,31 @@ img {
 			<a href="steamwebapi.html" class="tsd-kind-icon">Steam<wbr>Web<wbr>Api</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#friend" class="tsd-kind-icon">Friend</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#friendlist" class="tsd-kind-icon">Friend<wbr>List</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#playerban" class="tsd-kind-icon">Player<wbr>Ban</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#playerbans" class="tsd-kind-icon">Player<wbr>Bans</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
 			<a href="../modules.html#playersummaries" class="tsd-kind-icon">Player<wbr>Summaries</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
 			<a href="../modules.html#playersummary" class="tsd-kind-icon">Player<wbr>Summary</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#usergroup" class="tsd-kind-icon">User<wbr>Group</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#usergroups" class="tsd-kind-icon">User<wbr>Groups</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
+			<a href="../modules.html#vanityurlresolved" class="tsd-kind-icon">VanityURLResolved</a>
 		</li>
 	</ul>
 </nav>
@@ -2769,7 +2802,11 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="isteamuser.html#getfriendlist" class="tsd-kind-icon">get<wbr>Friend<wbr>List</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="isteamuser.html#getplayerbans" class="tsd-kind-icon">get<wbr>Player<wbr>Bans</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="isteamuser.html#getplayersummaries" class="tsd-kind-icon">get<wbr>Player<wbr>Summaries</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="isteamuser.html#getusergrouplist" class="tsd-kind-icon">get<wbr>User<wbr>Group<wbr>List</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="isteamuser.html#resolvevanityurl" class="tsd-kind-icon">resolve<wbr>VanityURL</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2787,7 +2824,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/8862145/src/api/usersApi.ts#L11">api/usersApi.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L20">api/usersApi.ts:20</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2812,7 +2849,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">api<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/8862145/src/api/usersApi.ts#L11">api/usersApi.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L20">api/usersApi.ts:20</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2822,13 +2859,81 @@ img {
 				<div class="tsd-signature tsd-kind-icon">http<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HttpClient</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/8862145/src/api/usersApi.ts#L10">api/usersApi.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L19">api/usersApi.ts:19</a></li>
 					</ul>
 				</aside>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="getfriendlist" class="tsd-anchor"></a>
+				<h3>get<wbr>Friend<wbr>List</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Friend<wbr>List<span class="tsd-signature-symbol">(</span>steamid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, relationship<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FriendRelationship</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#friendlist" class="tsd-signature-type" data-tsd-kind="Type alias">FriendList</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L33">api/usersApi.ts:33</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>User friend list.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>steamid: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The 64 bit ID of the user to retrieve a list for.</p>
+								</div>
+							</li>
+							<li>
+								<h5>relationship: <span class="tsd-signature-type">FriendRelationship</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Filter by a given role. Possible options are <em>all</em> (All roles), <em>friend</em>.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#friendlist" class="tsd-signature-type" data-tsd-kind="Type alias">FriendList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="getplayerbans" class="tsd-anchor"></a>
+				<h3>get<wbr>Player<wbr>Bans</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Player<wbr>Bans<span class="tsd-signature-symbol">(</span>steamids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#playerbans" class="tsd-signature-type" data-tsd-kind="Type alias">PlayerBans</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L50">api/usersApi.ts:50</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Player ban/probation status.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>steamids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Comma-delimited list of steam IDs.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#playerbans" class="tsd-signature-type" data-tsd-kind="Type alias">PlayerBans</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 				<a name="getplayersummaries" class="tsd-anchor"></a>
 				<h3>get<wbr>Player<wbr>Summaries</h3>
@@ -2839,12 +2944,12 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/8862145/src/api/usersApi.ts#L23">api/usersApi.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L66">api/usersApi.ts:66</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Get basic profile information for a list of 64-bit Steam IDs.</p>
+								<p>User profile data</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2852,11 +2957,74 @@ img {
 							<li>
 								<h5>steamids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 								<div class="tsd-comment tsd-typography">
-									<p>A comma-separated list of 64 bit IDs to retrieve profiles for.</p>
+									<p>Comma-delimited list of steam IDs.</p>
 								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#playersummaries" class="tsd-signature-type" data-tsd-kind="Type alias">PlayerSummaries</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="getusergrouplist" class="tsd-anchor"></a>
+				<h3>get<wbr>User<wbr>Group<wbr>List</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>User<wbr>Group<wbr>List<span class="tsd-signature-symbol">(</span>steamid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#usergroups" class="tsd-signature-type" data-tsd-kind="Type alias">UserGroups</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L82">api/usersApi.ts:82</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Lists Group ID(s) linked with 64 bit ID.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>steamid: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The 64 bit ID of the user.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#usergroups" class="tsd-signature-type" data-tsd-kind="Type alias">UserGroups</a><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="resolvevanityurl" class="tsd-anchor"></a>
+				<h3>resolve<wbr>VanityURL</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">resolve<wbr>VanityURL<span class="tsd-signature-symbol">(</span>vanityurl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#vanityurlresolved" class="tsd-signature-type" data-tsd-kind="Type alias">VanityURLResolved</a><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/j4ckofalltrades/steam-webapi-ts/blob/210c312/src/api/usersApi.ts#L99">api/usersApi.ts:99</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Resolve vanity URL parts to a 64 bit ID.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>vanityurl: <span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The user&#39;s vanity URL that you would like to retrieve a steam ID for,
+									e.g. <a href="http://steamcommunity.com/id/gabelogannewell">http://steamcommunity.com/id/gabelogannewell</a> would use &quot;gabelogannewell&quot;.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#vanityurlresolved" class="tsd-signature-type" data-tsd-kind="Type alias">VanityURLResolved</a><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
