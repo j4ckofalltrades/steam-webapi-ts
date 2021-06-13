@@ -29,7 +29,7 @@ type JsonValue =
 
 
 /**
- * @property steamid The user's 64 bit ID
+ * @property steamid The user's 64 bit ID.
  * @property communityvisibilitystate An integer that describes the access setting of the profile.
  *           1 - Private, 2 - Friends only, 3 - Friends of Friends, 4 - Users Only, 5 Public.
  * @property profilestate If set to 1 the user has configured the profile.
@@ -87,8 +87,8 @@ export type PlayerSummaries = {
 export type FriendRelationship = "all" | "friend"
 
 /**
- * @property steamid The user's 64 bit ID
- * @property relationship Role in relation to the given steamid
+ * @property steamid The user's 64 bit ID.
+ * @property relationship Role in relation to the given steamid.
  * @property friend_since A unix timestamp of when the friend was added to the list.
  */
 export type Friend = {
@@ -129,4 +129,22 @@ export type PlayerBan = {
  */
 export type PlayerBans = {
   players: PlayerBan[],
+}
+
+/**
+ * @property gid 64 bit ID number of group.
+ */
+export type UserGroup = {
+  gid: string,
+}
+
+/**
+ * @property success Result status of the call.
+ * @property groups List of groups the user subscribes to.
+ */
+export type UserGroups = {
+  response: {
+    success: boolean,
+    groups: UserGroup[],
+  }
 }

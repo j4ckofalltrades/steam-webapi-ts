@@ -5,6 +5,8 @@ import {
   PlayerBans,
   PlayerSummaries,
   PlayerSummary,
+  UserGroup,
+  UserGroups,
 } from "./api/types"
 import { ISteamUser } from "./api/usersApi"
 import { SteamWebApi } from "./api/webApi"
@@ -15,7 +17,9 @@ export type {
   PlayerBan,
   PlayerBans,
   PlayerSummaries,
-  PlayerSummary
+  PlayerSummary,
+  UserGroup,
+  UserGroups,
 }
 export {
   ISteamUser,

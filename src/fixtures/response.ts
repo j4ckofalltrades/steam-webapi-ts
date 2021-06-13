@@ -55,3 +55,14 @@ export const playerBansMock = {
     }
   ]
 }
+
+export const userGroupListMock = {
+  response: {
+    success: true,
+    groups: [
+      {
+        gid: "4",
+      }
+    ]
+  }
+}

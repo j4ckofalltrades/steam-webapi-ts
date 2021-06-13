@@ -1,6 +1,6 @@
-import { FriendList, FriendRelationship, PlayerBans, PlayerSummaries, SteamId, WebApiKey } from "./types"
+import { FriendList, FriendRelationship, PlayerBans, PlayerSummaries, SteamId, UserGroups, WebApiKey } from "./types"
 import { httpClient, HttpClient } from "./http"
-import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES } from "./url"
+import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_LIST } from "./url"
 
 /**
  * Methods relating to Steam users.
@@ -61,6 +61,17 @@ export class ISteamUser {
         params: {
           key: this.apiKey,
           steamids: JSON.stringify(steamids),
+        }
+      })
+  }
+
+  async getUserGroupList(steamid: SteamId): Promise<UserGroups> {
+    return await this.http.get<UserGroups>(
+      GET_USER_GROUP_LIST,
+      {
+        params: {
+          key: this.apiKey,
+          steamid,
         }
       })
   }

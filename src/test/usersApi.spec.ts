@@ -1,7 +1,7 @@
 import { ISteamUser } from "../api/usersApi"
-import { friendsListMock, playerBansMock, playerSummariesMock } from "../fixtures/response"
+import { friendsListMock, playerBansMock, playerSummariesMock, userGroupListMock } from "../fixtures/response"
 import { HttpClient } from "../api/http"
-import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES } from "../api/url"
+import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_LIST } from "../api/url"
 
 jest.mock("../api/http")
 
@@ -82,6 +82,28 @@ describe("ISteamUser", () => {
           params: {
             key: apiKeyTest,
             steamids: JSON.stringify(steamids),
+          }
+        }
+      )
+    })
+  })
+
+  describe("getUserGroupList", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(userGroupListMock)
+    })
+
+    it("should return userGroupList", async () => {
+      const steamid = "1"
+      const response = await api.getUserGroupList(steamid)
+
+      expect(response).toEqual(userGroupListMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_USER_GROUP_LIST,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
           }
         }
       )
