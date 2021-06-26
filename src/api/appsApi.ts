@@ -9,6 +9,9 @@ export class ISteamApps {
 
   private readonly http: HttpClient
 
+  /**
+   * @param http HTTP client.
+   */
   constructor(http: HttpClient = httpClient) {
     this.http = http
   }

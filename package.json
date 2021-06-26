@@ -1,6 +1,6 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "A Typescript wrapper for Steam's Web API",
   "main": "cjs/index.js",
   "module": "esm/index.js",

@@ -1,6 +1,6 @@
 import { HttpClient } from "../api/http"
 import { ISteamApps } from "../api/appsApi"
-import { appListMock, upToDateCheckMock } from "../fixtures/response"
+import { appListMock, upToDateCheckMock } from "../fixtures/appsMock"
 import { GET_APP_LIST, UP_TO_DATE_CHECK } from "../api/url"
 
 jest.mock("../api/http")

@@ -5,7 +5,7 @@ import {
   playerSummariesMock,
   userGroupListMock,
   vanityURLResolvedMock
-} from "../fixtures/response"
+} from "../fixtures/userMock"
 import { HttpClient } from "../api/http"
 import {
   GET_FRIEND_LIST,

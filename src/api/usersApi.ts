@@ -16,9 +16,13 @@ import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_
  */
 export class ISteamUser {
 
-  private readonly http: HttpClient
   private readonly apiKey: WebApiKey
+  private readonly http: HttpClient
 
+  /**
+   * @param apiKey Steam Web API key.
+   * @param http Http client.
+   */
   constructor(apiKey: WebApiKey, http: HttpClient = httpClient) {
     this.apiKey = apiKey
     this.http = http
