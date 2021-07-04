@@ -1,5 +1,5 @@
 import { HttpClient } from "../api/http"
-import { ISteamNews, NewsForAppParams } from "../api/newsApi"
+import { ISteamNews } from "../api/newsApi"
 import { newsForAppMock } from "../fixtures/newsMock"
 import { GET_NEWS_FOR_APP } from "../api/url"
 
