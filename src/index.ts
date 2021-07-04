@@ -11,6 +11,7 @@ import {
   OwnedGames,
   PlayerBadges,
   RecentlyPlayedGames,
+  SharedGameDetails,
   SteamLevel
 } from "./api/playerService"
 import { AppId, SteamId, WebApiKey } from "./api/shared"
@@ -68,6 +69,7 @@ export type {
   OwnedGames,
   PlayerBadges,
   RecentlyPlayedGames,
+  SharedGameDetails,
   SteamId,
   SteamLevel,
   UpToDateCheck,

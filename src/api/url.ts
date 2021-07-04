@@ -27,4 +27,5 @@ export const GET_RECENTLY_PLAYED_GAMES = "/IPlayerService/GetRecentlyPlayedGames
 export const GET_OWNED_GAMES = "/IPlayerService/GetOwnedGames/v1"
 export const GET_STEAM_LEVEL = "/IPlayerService/GetSteamLevel/v1"
 export const GET_BADGES = "/IPlayerService/GetBadges/v1"
-export const GET_COMMUNITY_BADGE_PROGRESS = "/IPlayerService/GetCommunityBadgeProgress"
+export const GET_COMMUNITY_BADGE_PROGRESS = "/IPlayerService/GetCommunityBadgeProgress/v1"
+export const IS_PLAYING_SHARED_GAME = "/IPlayerService/IsPlayingSharedGame/v1"

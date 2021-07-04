@@ -54,6 +54,12 @@ export const playerLevelMock = {
   }
 }
 
+export const playingSharedGameMock = {
+  response: {
+    lender_steamid: "0"
+  }
+}
+
 export const recentlyPlayedGamesMock = {
   response: {
     total_count: 1,

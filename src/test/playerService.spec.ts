@@ -4,7 +4,8 @@ import {
   GET_COMMUNITY_BADGE_PROGRESS,
   GET_OWNED_GAMES,
   GET_RECENTLY_PLAYED_GAMES,
-  GET_STEAM_LEVEL
+  GET_STEAM_LEVEL,
+  IS_PLAYING_SHARED_GAME
 } from "../api/url"
 import { IPlayerService } from "../api/playerService"
 import {
@@ -12,6 +13,7 @@ import {
   playerBadgeProgressMock,
   playerBadgesMock,
   playerLevelMock,
+  playingSharedGameMock,
   recentlyPlayedGamesMock
 } from "../fixtures/playerServiceMock"
 
@@ -136,6 +138,29 @@ describe("IPlayerService", () => {
           params: {
             key: apiKeyTest,
             steamid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("isPlayingSharedGame", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playingSharedGameMock)
+    })
+
+    it("should return the lender Steam id for borrowed game", async () => {
+      const appid_playing = 1
+      const response = await api.isPlayingSharedGame(steamid, appid_playing)
+
+      expect(response).toEqual(playingSharedGameMock)
+      expect(httpMock.get).toBeCalledWith(
+        IS_PLAYING_SHARED_GAME,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
+            appid_playing,
           }
         }
       )

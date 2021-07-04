@@ -5,7 +5,7 @@ import {
   GET_COMMUNITY_BADGE_PROGRESS,
   GET_OWNED_GAMES,
   GET_RECENTLY_PLAYED_GAMES,
-  GET_STEAM_LEVEL
+  GET_STEAM_LEVEL, IS_PLAYING_SHARED_GAME
 } from "./url"
 
 /**
@@ -138,6 +138,15 @@ export type BadgeProgress = {
 }
 
 /**
+ * @property lender_steamid Owner of shared game.
+ */
+export type SharedGameDetails = {
+  response: {
+    lender_steamid: SteamId,
+  }
+}
+
+/**
  * Methods relating to a Steam user's games.
  */
 export class IPlayerService {
@@ -258,6 +267,25 @@ export class IPlayerService {
           key: this.apiKey,
           steamid,
           badgeid,
+        }
+      }
+    )
+  }
+
+  /**
+   * Returns valid lender SteamID if game currently played is borrowed.
+   *
+   * @param steamid The player we're asking about.
+   * @param appid_playing The game player is currently playing.
+   */
+  async isPlayingSharedGame(steamid: SteamId, appid_playing: AppId): Promise<SharedGameDetails> {
+    return await this.http.get<SharedGameDetails>(
+      IS_PLAYING_SHARED_GAME,
+      {
+        params: {
+          key: this.apiKey,
+          steamid,
+          appid_playing,
         }
       }
     )
