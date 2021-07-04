@@ -4,6 +4,7 @@ import {
   CurrentPlayerCount,
   GameSchema,
   GameUserStats,
+  GlobalStatsForGame,
   PlayerStats,
   SteamId,
   WebApiKey
@@ -11,8 +12,11 @@ import {
 import { httpClient, HttpClient } from "./http"
 import {
   GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
+  GET_GLOBAL_STATS_FOR_GAME,
   GET_NUMBER_OF_CURRENT_PLAYERS,
-  GET_PLAYER_ACHIEVEMENTS, GET_SCHEMA_FOR_GAME, GET_USER_STATS_FOR_GAME
+  GET_PLAYER_ACHIEVEMENTS,
+  GET_SCHEMA_FOR_GAME,
+  GET_USER_STATS_FOR_GAME
 } from "./url"
 
 /**
@@ -119,6 +123,34 @@ export class ISteamUserStats {
           key: this.apiKey,
           steamid,
           appid,
+        }
+      }
+    )
+  }
+
+  /**
+   * Retrieves the global stats percentages for the specified app.
+   *
+   * @param appid AppID that we're getting global stats for
+   * @param count Number of stats get data for
+   * @param stats Names of stat to get data for
+   */
+  async getGlobalStatsForGame(appid: AppId, count: number, stats: string[]): Promise<GlobalStatsForGame> {
+    let requestParams = {}
+    for (let i = 0; i < stats.length; i++) {
+      requestParams = {
+        ...requestParams,
+        [`name[${i}]`]: stats[i],
+      }
+    }
+
+    return await this.http.get<GlobalStatsForGame>(
+      GET_GLOBAL_STATS_FOR_GAME,
+      {
+        params: {
+          ...requestParams,
+          appid,
+          count,
         }
       }
     )

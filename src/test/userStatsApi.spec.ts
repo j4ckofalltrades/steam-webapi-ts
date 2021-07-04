@@ -3,12 +3,16 @@ import {
   currentPlayersMock,
   gameSchemaMock, gameUserStatsMock,
   globalAchievementsMock,
+  globalStatsForGameMock,
   playerAchievementsMock
 } from "../fixtures/userStatsMock"
 import {
   GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
+  GET_GLOBAL_STATS_FOR_GAME,
   GET_NUMBER_OF_CURRENT_PLAYERS,
-  GET_PLAYER_ACHIEVEMENTS, GET_SCHEMA_FOR_GAME, GET_USER_STATS_FOR_GAME
+  GET_PLAYER_ACHIEVEMENTS,
+  GET_SCHEMA_FOR_GAME,
+  GET_USER_STATS_FOR_GAME
 } from "../api/url"
 import { ISteamUserStats } from "../api/userStatsApi"
 
@@ -120,7 +124,7 @@ describe("ISteamUserStats", () => {
       HttpClientMock.prototype.get.mockResolvedValue(gameUserStatsMock)
     })
 
-    it("should return list of user stats for the game", async () => {
+    it("should return list of stats that the specified user has set in an app", async () => {
       const response = await api.getUserStatsForGame(steamid, appid)
 
       expect(response).toEqual(gameUserStatsMock)
@@ -131,6 +135,30 @@ describe("ISteamUserStats", () => {
             key: apiKeyTest,
             steamid,
             appid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getGlobalStatsForGame", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(globalStatsForGameMock)
+    })
+
+    it("should return global stats for the game", async () => {
+      const count = 2
+      const response = await api.getGlobalStatsForGame(appid, count, ["stat_1", "stat_2"])
+
+      expect(response).toEqual(globalStatsForGameMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_GLOBAL_STATS_FOR_GAME,
+        {
+          params: {
+            appid,
+            count,
+            "name[0]": "stat_1",
+            "name[1]": "stat_2",
           }
         }
       )

@@ -13,6 +13,7 @@ export const RESOLVE_VANITY_URL = "ISteamUser/ResolveVanityURL/v1"
 
 // ISteamUserStats
 export const GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP = "/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v2"
+export const GET_GLOBAL_STATS_FOR_GAME = "/ISteamUserStats/GetGlobalStatsForGame/v1"
 export const GET_NUMBER_OF_CURRENT_PLAYERS = "/ISteamUserStats/GetNumberOfCurrentPlayers/v1/"
 export const GET_PLAYER_ACHIEVEMENTS = "/ISteamUserStats/GetPlayerAchievements/v1/"
 export const GET_SCHEMA_FOR_GAME = "/ISteamUserStats/GetSchemaForGame/v2"

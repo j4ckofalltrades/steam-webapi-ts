@@ -91,3 +91,19 @@ export const playerAchievementsMock = {
     success: true,
   }
 }
+
+export const globalStatsForGameMock = {
+  response: {
+    result: 1,
+    globalstats: [
+      {
+        stat_name_0: {
+          total: 123
+        },
+        stat_name_1: {
+          total: 345
+        }
+      }
+    ]
+  }
+}

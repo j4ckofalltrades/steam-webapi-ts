@@ -310,3 +310,18 @@ export type GameUserStats = {
     achieved: number
   }[],
 }
+
+/**
+ * @property result Result code
+ * @property globalstats Array of global game statistics
+ */
+export type GlobalStatsForGame = {
+  response: {
+    result: number,
+    globalstats: {
+      [key: string]: {
+        total: number
+      }
+    }[],
+  }
+}
