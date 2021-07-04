@@ -39,9 +39,9 @@ export type CurrentPlayerCount = {
 }
 
 /**
- * @property steamID The 64 bit ID of the user
- * @property gameName String containing the game title
- * @property achievements List of {@link PlayerAchievement} objects
+ * @property steamID The 64 bit ID of the user.
+ * @property gameName String containing the game title.
+ * @property achievements List of achievements unlocked by the user.
  */
 export type PlayerStats = {
   steamID: SteamId,

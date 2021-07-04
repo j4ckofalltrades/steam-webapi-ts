@@ -1,7 +1,7 @@
 import { HttpClient } from "../api/http"
-import { GET_RECENTLY_PLAYED_GAMES } from "../api/url"
+import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES } from "../api/url"
 import { IPlayerService } from "../api/playerService"
-import { recentlyPlayedGamesMock } from "../fixtures/playerServiceMock"
+import { ownedGamesMock, recentlyPlayedGamesMock } from "../fixtures/playerServiceMock"
 
 jest.mock("../api/http")
 
@@ -19,6 +19,7 @@ beforeEach(() => {
 
 describe("IPlayerService", () => {
   const { httpMock, api } = setup()
+  const steamid = "1"
 
   describe("getRecentlyPlayedGames", () => {
     beforeEach(() => {
@@ -26,7 +27,6 @@ describe("IPlayerService", () => {
     })
 
     it("should return games recently played by the user", async () => {
-      const steamid = "1"
       const response = await api.getRecentlyPlayedGames(steamid)
 
       expect(response).toEqual(recentlyPlayedGamesMock)
@@ -36,6 +36,31 @@ describe("IPlayerService", () => {
           params: {
             key: apiKeyTest,
             steamid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getOwnedGames", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(ownedGamesMock)
+    })
+
+    it("should return games belonging to the user", async () => {
+      const response = await api.getOwnedGames(steamid)
+
+      expect(response).toEqual(ownedGamesMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_OWNED_GAMES,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
+            // Whether or not to list free-to-play games in the results. Defaults to false.
+            include_appinfo: false,
+            // Whether or not to include additional details of apps - name and images. Defaults to false.
+            include_played_free_games: false,
           }
         }
       )

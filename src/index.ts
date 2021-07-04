@@ -1,7 +1,14 @@
 import { SteamWebApi } from "./api/webApi"
 import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
 import { ISteamNews, NewsForAppParams } from "./api/newsApi"
-import { IPlayerService, RecentGame, RecentlyPlayedGames } from "./api/playerService"
+import {
+  Game,
+  GetOwnedGamesParams,
+  IPlayerService,
+  OwnedGame,
+  OwnedGames,
+  RecentlyPlayedGames
+} from "./api/playerService"
 import { AppId, SteamId, WebApiKey } from "./api/shared"
 import {
   Friend,
@@ -49,7 +56,10 @@ export type {
   PlayerStats,
   PlayerSummaries,
   PlayerSummary,
-  RecentGame,
+  Game,
+  GetOwnedGamesParams,
+  OwnedGame,
+  OwnedGames,
   RecentlyPlayedGames,
   SteamId,
   UpToDateCheck,

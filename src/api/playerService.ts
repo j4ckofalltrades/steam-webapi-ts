@@ -1,6 +1,6 @@
 import { httpClient, HttpClient } from "./http"
 import { SteamId, WebApiKey } from "./shared"
-import { GET_RECENTLY_PLAYED_GAMES } from "./url"
+import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES } from "./url"
 
 /**
  * @property appid An integer containing the program's ID.
@@ -17,7 +17,7 @@ import { GET_RECENTLY_PLAYED_GAMES } from "./url"
  * @property playtime_mac_forever An integer of the the player's total playtime on MacOS, denoted in minutes.
  * @property playtime_linux_forever An integer of the the player's total playtime on Linux, denoted in minutes.
  */
-export type RecentGame = {
+export type Game = {
   appid: string,
   name: string,
   playtime_2weeks: number,
@@ -36,8 +36,41 @@ export type RecentGame = {
 export type RecentlyPlayedGames = {
   response: {
     total_count: number,
-    games: RecentGame[],
+    games: Game[],
   }
+}
+
+/**
+ * @property has_community_visible_stats (Optional) Whether the program has stats accessible via
+ *           {@link ISteamUserStats.getUserStatsForGame} and {@link ISteamUserStats.getGlobalStatsForGame}.
+ */
+export type OwnedGame = Partial<Game> & {
+  has_community_visible_stats: boolean,
+}
+
+/**
+ * @property game_count Total number of results.
+ * @property games Array of games belonging to the user.
+ */
+export type OwnedGames = {
+  response: {
+    game_count: number,
+    games: OwnedGame[],
+  }
+}
+
+/**
+ * @property include_appinfo (Optional) Whether or not to include additional details of apps - name and images.
+ *           Defaults to false.
+ * @property include_played_free_games (Optional) Whether or not to list free-to-play games in the results.
+ *           Defaults to false.
+ * @proprety appids_filter (Optional) Restricts results to the appids passed here. This is an array and should be passed
+ *           like "appids_filter[0]=440&appids_filter[1]=570".
+ */
+export type GetOwnedGamesParams = {
+  include_appinfo?: boolean,
+  include_played_free_games?: boolean,
+  appids_filter?: number[],
 }
 
 /**
@@ -71,6 +104,42 @@ export class IPlayerService {
           key: this.apiKey,
           steamid,
           count,
+        }
+      }
+    )
+  }
+
+  /**
+   * Return a list of games owned by the player.
+   *
+   * @param steamid The player we're asking about.
+   * @param request (Optional) Additional request parameters.
+   */
+  async getOwnedGames(steamid: SteamId, request?: GetOwnedGamesParams): Promise<OwnedGames> {
+    let requestParams = {}
+    if (request?.appids_filter !== undefined && request?.appids_filter.length > 0) {
+      const appids = request?.appids_filter
+      for (let i = 0; i < appids.length; i++) {
+        requestParams = {
+          ...requestParams,
+          [`appids_filter[${ i }]`]: appids[i],
+        }
+      }
+    }
+
+    const include_appinfo = request?.include_appinfo !== undefined ? request.include_appinfo : false
+    const include_played_free_games = request?.include_played_free_games !== undefined
+      ? request.include_played_free_games : false
+
+    return await this.http.get<OwnedGames>(
+      GET_OWNED_GAMES,
+      {
+        params: {
+          ...requestParams,
+          key: this.apiKey,
+          steamid,
+          include_appinfo,
+          include_played_free_games,
         }
       }
     )

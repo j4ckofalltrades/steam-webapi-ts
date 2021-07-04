@@ -13,8 +13,23 @@ export const recentlyPlayedGamesMock = {
         img_logo_url: "d4f836839254be08d8e9dd333ecc9a01782c26d2",
         playtime_windows_forever: 37652,
         playtime_mac_forever: 0,
-        playtime_linux_forever: 6315,
-      },
+        playtime_linux_forever: 6315
+      }
+    ]
+  }
+}
+
+export const ownedGamesMock = {
+  response: {
+    game_count: 1,
+    games: [
+      {
+        appid: 1,
+        playtime_forever: 10,
+        playtime_windows_forever: 10,
+        playtime_mac_forever: 0,
+        playtime_linux_forever: 0
+      }
     ]
   }
 }

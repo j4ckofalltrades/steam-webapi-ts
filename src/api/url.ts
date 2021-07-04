@@ -24,7 +24,7 @@ export const GET_USER_STATS_FOR_GAME = "/ISteamUserStats/GetUserStatsForGame/v2/
 
 // IPlayerService
 export const GET_RECENTLY_PLAYED_GAMES = "/IPlayerService/GetRecentlyPlayedGames/v1"
-export const GET_OWNED_GAMES = ""
+export const GET_OWNED_GAMES = "/IPlayerService/GetOwnedGames/v1"
 export const GET_STEAM_LEVEL = ""
 export const GET_BADGES = ""
 export const GET_COMMUNITY_BADGE_PROGRESS = ""
