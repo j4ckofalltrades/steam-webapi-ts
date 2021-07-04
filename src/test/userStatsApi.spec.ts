@@ -103,8 +103,8 @@ describe("ISteamUserStats", () => {
     })
 
     it("should return list of available achievements and stats for the game", async () => {
-      const appid = 570
-      const response = await api.getSchemaForGame(appid)
+      const l = "en"
+      const response = await api.getSchemaForGame(appid, l)
 
       expect(response).toEqual(gameSchemaMock)
       expect(httpMock.get).toBeCalledWith(
@@ -113,6 +113,7 @@ describe("ISteamUserStats", () => {
           params: {
             key: apiKeyTest,
             appid,
+            l,
           }
         }
       )

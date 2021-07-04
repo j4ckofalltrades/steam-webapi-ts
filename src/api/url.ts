@@ -29,3 +29,7 @@ export const GET_STEAM_LEVEL = "/IPlayerService/GetSteamLevel/v1"
 export const GET_BADGES = "/IPlayerService/GetBadges/v1"
 export const GET_COMMUNITY_BADGE_PROGRESS = "/IPlayerService/GetCommunityBadgeProgress/v1"
 export const IS_PLAYING_SHARED_GAME = "/IPlayerService/IsPlayingSharedGame/v1"
+
+// ISteamWebAPIUtil
+export const GET_SERVER_INFO = "/ISteamWebAPIUtil/GetServerInfo/v1"
+export const GET_SUPPORTED_API_LIST = "/ISteamWebAPIUtil/GetSupportedAPIList/v1"

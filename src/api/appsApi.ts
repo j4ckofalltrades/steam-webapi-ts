@@ -23,7 +23,7 @@ export type App = {
 /**
  * @property success Boolean indicating if request was successful.
  * @property up_to_date Boolean indicating if the given version number is the most current version.
- * @property version_is_listable Boolean indicating if the given version can be listed in public changelogs. [1]
+ * @property version_is_listable Boolean indicating if the given version can be listed in public changelogs.
  * @property required_version (Optional) Integer of the most current version of the app available.
  * @property message (Optional) A string giving the status message if applicable.
  */

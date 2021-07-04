@@ -204,7 +204,7 @@ export class ISteamUserStats {
         params: {
           steamid,
           appid,
-          l,
+          ...l,
         }
       }
     )
@@ -224,7 +224,7 @@ export class ISteamUserStats {
         params: {
           key: this.apiKey,
           appid,
-          l,
+          ...l,
         }
       }
     )

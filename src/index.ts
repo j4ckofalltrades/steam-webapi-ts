@@ -40,6 +40,7 @@ import {
   PlayerAchievement,
   PlayerStats
 } from "./api/userStatsApi"
+import { ISteamWebAPIUtil, ServerInfo, SupportedAPI } from "./api/webApiUtil"
 
 export type {
   AppId,
@@ -69,9 +70,11 @@ export type {
   OwnedGames,
   PlayerBadges,
   RecentlyPlayedGames,
+  ServerInfo,
   SharedGameDetails,
   SteamId,
   SteamLevel,
+  SupportedAPI,
   UpToDateCheck,
   UserGroup,
   UserGroups,
@@ -84,5 +87,6 @@ export {
   ISteamNews,
   ISteamUser,
   ISteamUserStats,
+  ISteamWebAPIUtil,
   SteamWebApi
 }
