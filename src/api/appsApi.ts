@@ -17,7 +17,7 @@ export type AppList = {
  */
 export type App = {
   appid: AppId,
-  name: string
+  name: string,
 }
 
 /**

@@ -4,6 +4,9 @@ export const BASE_API_URL = "https://api.steampowered.com"
 export const GET_APP_LIST = "/ISteamApps/GetAppList/v2"
 export const UP_TO_DATE_CHECK = "/ISteamApps/UpToDateCheck/v1"
 
+// ISteamNews
+export const GET_NEWS_FOR_APP = "/ISteamNews/GetNewsForApp/v2"
+
 // ISteamUser
 export const GET_PLAYER_SUMMARIES = "/ISteamUser/GetPlayerSummaries/v2"
 export const GET_FRIEND_LIST = "ISteamUser/GetFriendList/v1"

@@ -1,5 +1,6 @@
 import { SteamWebApi } from "./api/webApi"
 import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
+import { ISteamNews, NewsForAppParams } from "./api/newsApi"
 import { AppId, SteamId, WebApiKey } from "./api/shared"
 import {
   Friend,
@@ -40,6 +41,7 @@ export type {
   GameUserStats,
   GlobalAchievement,
   GlobalStatsForGame,
+  NewsForAppParams,
   PlayerAchievement,
   PlayerBan,
   PlayerBans,
@@ -54,8 +56,9 @@ export type {
   WebApiKey
 }
 export {
-  ISteamUser,
   ISteamApps,
+  ISteamNews,
+  ISteamUser,
   ISteamUserStats,
   SteamWebApi
 }
