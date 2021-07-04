@@ -1,33 +1,31 @@
+import { SteamWebApi } from "./api/webApi"
+import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
+import { AppId, SteamId, WebApiKey } from "./api/shared"
 import {
-  AchievementPercentages,
-  AppId,
-  AppList,
-  CurrentPlayerCount,
   Friend,
   FriendList,
+  ISteamUser,
+  PlayerBan,
+  PlayerBans,
+  PlayerSummaries,
+  PlayerSummary,
+  UserGroup,
+  UserGroups,
+  VanityURLResolved
+} from "./api/usersApi"
+import {
+  AchievementPercentages,
+  CurrentPlayerCount,
   GameSchema,
   GameSchemaAchievements,
   GameSchemaStats,
   GameUserStats,
   GlobalAchievement,
   GlobalStatsForGame,
+  ISteamUserStats,
   PlayerAchievement,
-  PlayerBan,
-  PlayerBans,
-  PlayerStats,
-  PlayerSummaries,
-  PlayerSummary,
-  SteamId,
-  UpToDateCheck,
-  UserGroup,
-  UserGroups,
-  VanityURLResolved,
-  WebApiKey,
-} from "./api/types"
-import { ISteamApps } from "./api/appsApi"
-import { ISteamUser } from "./api/usersApi"
-import { ISteamUserStats } from "./api/userStatsApi"
-import { SteamWebApi } from "./api/webApi"
+  PlayerStats
+} from "./api/userStatsApi"
 
 export type {
   AppId,

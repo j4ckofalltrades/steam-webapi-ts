@@ -1,6 +1,6 @@
 import { httpClient } from "./http"
 import { ISteamUser } from "./usersApi"
-import { WebApiKey } from "./types"
+import { WebApiKey } from "./shared"
 import { ISteamApps } from "./appsApi"
 import { ISteamUserStats } from "./userStatsApi"
 
