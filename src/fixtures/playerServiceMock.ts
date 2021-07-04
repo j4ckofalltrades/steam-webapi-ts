@@ -15,6 +15,21 @@ export const ownedGamesMock = {
   }
 }
 
+export const playerBadgeProgressMock = {
+  response: {
+    quests: [
+      {
+        questid: 115,
+        completed: true
+      },
+      {
+        questid: 128,
+        completed: true
+      }
+    ]
+  }
+}
+
 export const playerBadgesMock = {
   response: {
     badges: [

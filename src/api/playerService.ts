@@ -1,6 +1,12 @@
 import { httpClient, HttpClient } from "./http"
 import { AppId, SteamId, WebApiKey } from "./shared"
-import { GET_BADGES, GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "./url"
+import {
+  GET_BADGES,
+  GET_COMMUNITY_BADGE_PROGRESS,
+  GET_OWNED_GAMES,
+  GET_RECENTLY_PLAYED_GAMES,
+  GET_STEAM_LEVEL
+} from "./url"
 
 /**
  * @property appid An integer containing the program's ID.
@@ -118,6 +124,20 @@ export type PlayerBadges = {
 }
 
 /**
+ * @property quests Array of quests (actions required to unlock a badge).
+ * @property questid Quest ID.
+ * @property completed Whether the Steam account has completed this quest.
+ */
+export type BadgeProgress = {
+  response: {
+    quests: {
+      questid: string,
+      completed: boolean,
+    }[]
+  }
+}
+
+/**
  * Methods relating to a Steam user's games.
  */
 export class IPlayerService {
@@ -218,6 +238,26 @@ export class IPlayerService {
         params: {
           key: this.apiKey,
           steamid,
+        }
+      }
+    )
+  }
+
+  /**
+   * Gets all the quests needed to get the specified badge, and which are completed.
+   *
+   * @param steamid The player we're asking about.
+   * @param badge The badge we're asking about.
+   */
+  async getCommunityBadgeProgress(steamid: SteamId, badge?: number): Promise<BadgeProgress> {
+    const badgeid = badge !== undefined ? { badgeid: badge } : undefined
+    return await this.http.get<BadgeProgress>(
+      GET_COMMUNITY_BADGE_PROGRESS,
+      {
+        params: {
+          key: this.apiKey,
+          steamid,
+          badgeid,
         }
       }
     )

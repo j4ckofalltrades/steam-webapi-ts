@@ -3,6 +3,7 @@ import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
 import { ISteamNews, NewsForAppParams } from "./api/newsApi"
 import {
   Badge,
+  BadgeProgress,
   Game,
   GetOwnedGamesParams,
   IPlayerService,
@@ -44,6 +45,7 @@ export type {
   AppList,
   AchievementPercentages,
   Badge,
+  BadgeProgress,
   CurrentPlayerCount,
   Friend,
   FriendList,

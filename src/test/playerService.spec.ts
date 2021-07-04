@@ -1,8 +1,15 @@
 import { HttpClient } from "../api/http"
-import { GET_BADGES, GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "../api/url"
+import {
+  GET_BADGES,
+  GET_COMMUNITY_BADGE_PROGRESS,
+  GET_OWNED_GAMES,
+  GET_RECENTLY_PLAYED_GAMES,
+  GET_STEAM_LEVEL
+} from "../api/url"
 import { IPlayerService } from "../api/playerService"
 import {
   ownedGamesMock,
+  playerBadgeProgressMock,
   playerBadgesMock,
   playerLevelMock,
   recentlyPlayedGamesMock
@@ -104,6 +111,27 @@ describe("IPlayerService", () => {
       expect(response).toEqual(playerBadgesMock)
       expect(httpMock.get).toBeCalledWith(
         GET_BADGES,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getCommunityBadgeProgress", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playerBadgeProgressMock)
+    })
+
+    it("should return the quests needed to get the specified badge", async () => {
+      const response = await api.getCommunityBadgeProgress(steamid)
+
+      expect(response).toEqual(playerBadgeProgressMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_COMMUNITY_BADGE_PROGRESS,
         {
           params: {
             key: apiKeyTest,
