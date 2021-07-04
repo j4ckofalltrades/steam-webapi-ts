@@ -8,6 +8,7 @@
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "includeVersion": true,
+    "name": "Steam Web API Documentation",
     "out": "docs",
     "theme": "minimal"
   }

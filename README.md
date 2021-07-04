@@ -52,6 +52,4 @@ await usersApi.getPlayerSummaries(["steam_ids"])
 
 ## Docs
 
-Read the documentation [here](https://j4ckofalltrades.github.io/steam-webapi-ts/)
-
-Read the Steam Web API documentation [here](https://developer.valvesoftware.com/wiki/Steam_Web_API)
+For more detailed documentation see https://j4ckofalltrades.github.io/steam-webapi-ts.
