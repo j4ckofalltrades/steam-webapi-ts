@@ -1,5 +1,26 @@
 // IPlayerService
 
+export const ownedGamesMock = {
+  response: {
+    game_count: 1,
+    games: [
+      {
+        appid: 1,
+        playtime_forever: 10,
+        playtime_windows_forever: 10,
+        playtime_mac_forever: 0,
+        playtime_linux_forever: 0
+      }
+    ]
+  }
+}
+
+export const playerLevelMock = {
+  response: {
+    player_level: 7
+  }
+}
+
 export const recentlyPlayedGamesMock = {
   response: {
     total_count: 1,
@@ -14,21 +35,6 @@ export const recentlyPlayedGamesMock = {
         playtime_windows_forever: 37652,
         playtime_mac_forever: 0,
         playtime_linux_forever: 6315
-      }
-    ]
-  }
-}
-
-export const ownedGamesMock = {
-  response: {
-    game_count: 1,
-    games: [
-      {
-        appid: 1,
-        playtime_forever: 10,
-        playtime_windows_forever: 10,
-        playtime_mac_forever: 0,
-        playtime_linux_forever: 0
       }
     ]
   }

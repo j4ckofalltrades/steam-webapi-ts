@@ -1,6 +1,6 @@
 import { httpClient, HttpClient } from "./http"
 import { SteamId, WebApiKey } from "./shared"
-import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES } from "./url"
+import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "./url"
 
 /**
  * @property appid An integer containing the program's ID.
@@ -74,6 +74,15 @@ export type GetOwnedGamesParams = {
 }
 
 /**
+ * @property player_level The Steam level of the player.
+ */
+export type SteamLevel = {
+  response: {
+    player_level: number,
+  }
+}
+
+/**
  * Methods relating to a Steam user's games.
  */
 export class IPlayerService {
@@ -140,6 +149,23 @@ export class IPlayerService {
           steamid,
           include_appinfo,
           include_played_free_games,
+        }
+      }
+    )
+  }
+
+  /**
+   * Returns the Steam Level of a user.
+   *
+   * @param steamid The player we're asking about.
+   */
+  async getSteamLevel(steamid: SteamId): Promise<SteamLevel> {
+    return await this.http.get<SteamLevel>(
+      GET_STEAM_LEVEL,
+      {
+        params: {
+          key: this.apiKey,
+          steamid,
         }
       }
     )

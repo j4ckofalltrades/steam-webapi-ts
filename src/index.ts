@@ -7,7 +7,8 @@ import {
   IPlayerService,
   OwnedGame,
   OwnedGames,
-  RecentlyPlayedGames
+  RecentlyPlayedGames,
+  SteamLevel
 } from "./api/playerService"
 import { AppId, SteamId, WebApiKey } from "./api/shared"
 import {
@@ -62,6 +63,7 @@ export type {
   OwnedGames,
   RecentlyPlayedGames,
   SteamId,
+  SteamLevel,
   UpToDateCheck,
   UserGroup,
   UserGroups,

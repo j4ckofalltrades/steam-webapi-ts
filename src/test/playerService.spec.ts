@@ -1,7 +1,7 @@
 import { HttpClient } from "../api/http"
-import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES } from "../api/url"
+import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "../api/url"
 import { IPlayerService } from "../api/playerService"
-import { ownedGamesMock, recentlyPlayedGamesMock } from "../fixtures/playerServiceMock"
+import { ownedGamesMock, playerLevelMock, recentlyPlayedGamesMock } from "../fixtures/playerServiceMock"
 
 jest.mock("../api/http")
 
@@ -61,6 +61,27 @@ describe("IPlayerService", () => {
             include_appinfo: false,
             // Whether or not to include additional details of apps - name and images. Defaults to false.
             include_played_free_games: false,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getSteamLevel", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playerLevelMock)
+    })
+
+    it("should return the user's Steam level", async () => {
+      const response = await api.getSteamLevel(steamid)
+
+      expect(response).toEqual(playerLevelMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_STEAM_LEVEL,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
           }
         }
       )

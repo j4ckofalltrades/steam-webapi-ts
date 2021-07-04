@@ -17,14 +17,14 @@ export const RESOLVE_VANITY_URL = "ISteamUser/ResolveVanityURL/v1"
 // ISteamUserStats
 export const GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP = "/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v2"
 export const GET_GLOBAL_STATS_FOR_GAME = "/ISteamUserStats/GetGlobalStatsForGame/v1"
-export const GET_NUMBER_OF_CURRENT_PLAYERS = "/ISteamUserStats/GetNumberOfCurrentPlayers/v1/"
-export const GET_PLAYER_ACHIEVEMENTS = "/ISteamUserStats/GetPlayerAchievements/v1/"
+export const GET_NUMBER_OF_CURRENT_PLAYERS = "/ISteamUserStats/GetNumberOfCurrentPlayers/v1"
+export const GET_PLAYER_ACHIEVEMENTS = "/ISteamUserStats/GetPlayerAchievements/v1"
 export const GET_SCHEMA_FOR_GAME = "/ISteamUserStats/GetSchemaForGame/v2"
-export const GET_USER_STATS_FOR_GAME = "/ISteamUserStats/GetUserStatsForGame/v2/"
+export const GET_USER_STATS_FOR_GAME = "/ISteamUserStats/GetUserStatsForGame/v2"
 
 // IPlayerService
 export const GET_RECENTLY_PLAYED_GAMES = "/IPlayerService/GetRecentlyPlayedGames/v1"
 export const GET_OWNED_GAMES = "/IPlayerService/GetOwnedGames/v1"
-export const GET_STEAM_LEVEL = ""
+export const GET_STEAM_LEVEL = "/IPlayerService/GetSteamLevel/v1"
 export const GET_BADGES = ""
 export const GET_COMMUNITY_BADGE_PROGRESS = ""
