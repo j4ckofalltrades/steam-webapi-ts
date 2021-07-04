@@ -1,7 +1,12 @@
 import { HttpClient } from "../api/http"
-import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "../api/url"
+import { GET_BADGES, GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "../api/url"
 import { IPlayerService } from "../api/playerService"
-import { ownedGamesMock, playerLevelMock, recentlyPlayedGamesMock } from "../fixtures/playerServiceMock"
+import {
+  ownedGamesMock,
+  playerBadgesMock,
+  playerLevelMock,
+  recentlyPlayedGamesMock
+} from "../fixtures/playerServiceMock"
 
 jest.mock("../api/http")
 
@@ -78,6 +83,27 @@ describe("IPlayerService", () => {
       expect(response).toEqual(playerLevelMock)
       expect(httpMock.get).toBeCalledWith(
         GET_STEAM_LEVEL,
+        {
+          params: {
+            key: apiKeyTest,
+            steamid,
+          }
+        }
+      )
+    })
+  })
+
+  describe("getBadges", () => {
+    beforeEach(() => {
+      HttpClientMock.prototype.get.mockResolvedValue(playerBadgesMock)
+    })
+
+    it("should return the user's Steam badges", async () => {
+      const response = await api.getBadges(steamid)
+
+      expect(response).toEqual(playerBadgesMock)
+      expect(httpMock.get).toBeCalledWith(
+        GET_BADGES,
         {
           params: {
             key: apiKeyTest,

@@ -2,11 +2,13 @@ import { SteamWebApi } from "./api/webApi"
 import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
 import { ISteamNews, NewsForAppParams } from "./api/newsApi"
 import {
+  Badge,
   Game,
   GetOwnedGamesParams,
   IPlayerService,
   OwnedGame,
   OwnedGames,
+  PlayerBadges,
   RecentlyPlayedGames,
   SteamLevel
 } from "./api/playerService"
@@ -41,6 +43,7 @@ export type {
   AppId,
   AppList,
   AchievementPercentages,
+  Badge,
   CurrentPlayerCount,
   Friend,
   FriendList,
@@ -61,6 +64,7 @@ export type {
   GetOwnedGamesParams,
   OwnedGame,
   OwnedGames,
+  PlayerBadges,
   RecentlyPlayedGames,
   SteamId,
   SteamLevel,

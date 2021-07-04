@@ -15,6 +15,24 @@ export const ownedGamesMock = {
   }
 }
 
+export const playerBadgesMock = {
+  response: {
+    badges: [
+      {
+        badgeid: 13,
+        level: 127,
+        completion_time: 1622373519,
+        xp: 356,
+        scarcity: 7098987
+      },
+    ],
+    player_xp: 706,
+    player_level: 7,
+    player_xp_needed_to_level_up: 94,
+    player_xp_needed_current_level: 700
+  }
+}
+
 export const playerLevelMock = {
   response: {
     player_level: 7

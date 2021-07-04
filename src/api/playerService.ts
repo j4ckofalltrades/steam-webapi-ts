@@ -1,6 +1,6 @@
 import { httpClient, HttpClient } from "./http"
-import { SteamId, WebApiKey } from "./shared"
-import { GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "./url"
+import { AppId, SteamId, WebApiKey } from "./shared"
+import { GET_BADGES, GET_OWNED_GAMES, GET_RECENTLY_PLAYED_GAMES, GET_STEAM_LEVEL } from "./url"
 
 /**
  * @property appid An integer containing the program's ID.
@@ -79,6 +79,41 @@ export type GetOwnedGamesParams = {
 export type SteamLevel = {
   response: {
     player_level: number,
+  }
+}
+
+/**
+ * @property badgeid Badge ID. Currently no official badge schema is available.
+ * @property appid (Optional) Provided if the badge relates to an app (trading cards).
+ * @property completion_time Unix timestamp of when the steam user acquired the badge.
+ * @property xp The experience this badge is worth, contributing toward the steam account's player_xp.
+ * @property communityitemid (Optional) Provided if the badge relates to an app (trading cards); the value doesn't seem to be an
+ *           item in the steam accounts backpack, however the value minus 1 seems to be the item ID for the emoticon
+ *           granted for crafting this badge, and the value minus 2 seems to be the background granted.
+ * @property border_color (Optional) Provided if the badge relates to an app (trading cards).
+ * @property scarcity The amount of people who has this badge.
+ */
+export type Badge = {
+  badgeid: number,
+  appid?: AppId,
+  level: number,
+  completion_time: number,
+  xp: number,
+  communityitemid?: number,
+  border_color: string,
+  scarcity: number,
+}
+
+/**
+ * @property badges Array of badges.
+ */
+export type PlayerBadges = {
+  response: {
+    badges: Badge[],
+    player_xp: number,
+    player_level: number,
+    player_xp_needed_to_level_up: number,
+    player_xp_needed_current_level: number,
   }
 }
 
@@ -162,6 +197,23 @@ export class IPlayerService {
   async getSteamLevel(steamid: SteamId): Promise<SteamLevel> {
     return await this.http.get<SteamLevel>(
       GET_STEAM_LEVEL,
+      {
+        params: {
+          key: this.apiKey,
+          steamid,
+        }
+      }
+    )
+  }
+
+  /**
+   * Gets badges that are owned by a specific user.
+   *
+   * @param steamid The player we're asking about.
+   */
+  async getBadges(steamid: SteamId): Promise<PlayerBadges> {
+    return await this.http.get<PlayerBadges>(
+      GET_BADGES,
       {
         params: {
           key: this.apiKey,
