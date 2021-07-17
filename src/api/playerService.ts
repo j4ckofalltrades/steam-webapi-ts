@@ -93,9 +93,9 @@ export type SteamLevel = {
  * @property appid (Optional) Provided if the badge relates to an app (trading cards).
  * @property completion_time Unix timestamp of when the steam user acquired the badge.
  * @property xp The experience this badge is worth, contributing toward the steam account's player_xp.
- * @property communityitemid (Optional) Provided if the badge relates to an app (trading cards); the value doesn't seem to be an
- *           item in the steam accounts backpack, however the value minus 1 seems to be the item ID for the emoticon
- *           granted for crafting this badge, and the value minus 2 seems to be the background granted.
+ * @property communityitemid (Optional) Provided if the badge relates to an app (trading cards); the value doesn't seem
+ *           to be an item in the steam accounts backpack, however the value minus 1 seems to be the item ID for the
+ *           emoticon granted for crafting this badge, and the value minus 2 seems to be the background granted.
  * @property border_color (Optional) Provided if the badge relates to an app (trading cards).
  * @property scarcity The amount of people who has this badge.
  */

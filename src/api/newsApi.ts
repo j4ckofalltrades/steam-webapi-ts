@@ -45,7 +45,7 @@ export type AppNews = {
  *           then a blurb is generated to fit.
  * @property enddate (Optional) Retrieve posts earlier than this date (unix epoch timestamp).
  * @property count (Optional) Number of posts to retrieve (default 20).
- * @property feeds (Optional) Comma-seperated list of feed names to return news for.
+ * @property feeds (Optional) Comma-separated list of feed names to return news for.
  */
 export type NewsForAppParams = {
   maxlength?: number,

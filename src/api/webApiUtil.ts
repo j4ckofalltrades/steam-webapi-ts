@@ -3,8 +3,8 @@ import { GET_SERVER_INFO, GET_SUPPORTED_API_LIST } from "./url"
 import { WebApiKey } from "./shared"
 
 /**
- * @property servertime - Unix timestamp of WebAPI server.
- * @property servertimestring - Time string of WebAPI server.
+ * @property servertime Unix timestamp of WebAPI server.
+ * @property servertimestring Time string of WebAPI server.
  */
 export type ServerInfo = {
   servertime: number,
@@ -74,7 +74,7 @@ export class ISteamWebAPIUtil {
   /**
    * Lists all available WebAPI interfaces.
    *
-   * @param apiKey (Optional) Presence of a Steam Web API key will display all available methods & interfaces allowed
+   * @param apiKey (Optional) Presence of a Steam WebAPI key will display all available methods & interfaces allowed
    *        for that key.
    */
   async getSupportedAPIList(apiKey?: WebApiKey): Promise<SupportedAPI> {

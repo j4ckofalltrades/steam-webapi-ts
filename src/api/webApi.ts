@@ -8,7 +8,7 @@ import { IPlayerService } from "./playerService"
 import { ISteamWebAPIUtil } from "./webApiUtil"
 
 /**
- * Steam Web API wrapper
+ * Steam WebAPI wrapper.
  */
 export class SteamWebApi {
 

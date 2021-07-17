@@ -112,9 +112,9 @@ export type GameSchemaStats = {
 }
 
 /**
- * @property steamid SteamId of user
- * @property appid AppId of game
- * @property achievements List of game achievements the user has unlocked
+ * @property steamid SteamId of user.
+ * @property appid AppId of game.
+ * @property achievements List of game achievements the user has unlocked.
  */
 export type GameUserStats = {
   steamid: SteamId,
@@ -126,8 +126,8 @@ export type GameUserStats = {
 }
 
 /**
- * @property result Result code
- * @property globalstats Array of global game statistics
+ * @property result Result code.
+ * @property globalstats Array of global game statistics.
  */
 export type GlobalStatsForGame = {
   response: {
@@ -176,7 +176,7 @@ export class ISteamUserStats {
   /**
    * Gets the total number of players currently active in the specified app on Steam.
    *
-   * @param appid AppID that we're getting user count for
+   * @param appid AppID that we're getting user count for.
    */
   async getNumberOfCurrentPlayers(appid: AppId): Promise<CurrentPlayerCount> {
     return await this.http.get<CurrentPlayerCount>(
@@ -192,9 +192,9 @@ export class ISteamUserStats {
   /**
    * Gets the list of achievements the specified user has unlocked in an app.
    *
-   * @param steamid SteamID of user
-   * @param appid AppID to get achievements for
-   * @param lang Language to return strings for
+   * @param steamid SteamID of user.
+   * @param appid AppID to get achievements for.
+   * @param lang Language to return strings for.
    */
   async getPlayerAchievements(steamid: SteamId, appid: AppId, lang?: string): Promise<PlayerStats> {
     const l = lang !== undefined ? { l: lang } : undefined
@@ -214,7 +214,7 @@ export class ISteamUserStats {
    * Gets the complete list of stats and achievements for the specified game.
    *
    * @param appid AppId of the game.
-   * @param lang Localized language to return (english, french, etc.)
+   * @param lang Localized language to return (english, french, etc.).
    */
   async getSchemaForGame(appid: AppId, lang?: string): Promise<GameSchema> {
     const l = lang !== undefined ? { l: lang } : undefined
@@ -233,8 +233,8 @@ export class ISteamUserStats {
   /**
    * Gets the list of stats that the specified user has set in an app.
    *
-   * @param steamid SteamId of user
-   * @param appid AppId of game
+   * @param steamid SteamId of user.
+   * @param appid AppId of game.
    */
   async getUserStatsForGame(steamid: SteamId, appid: AppId): Promise<GameUserStats> {
     return await this.http.get<GameUserStats>(
@@ -252,9 +252,9 @@ export class ISteamUserStats {
   /**
    * Retrieves the global stats percentages for the specified app.
    *
-   * @param appid AppID that we're getting global stats for
-   * @param count Number of stats get data for
-   * @param stats Names of stat to get data for
+   * @param appid AppID that we're getting global stats for.
+   * @param count Number of stats get data for.
+   * @param stats Names of stat to get data for.
    */
   async getGlobalStatsForGame(appid: AppId, count: number, stats: string[]): Promise<GlobalStatsForGame> {
     let requestParams = {}

@@ -1,10 +1,12 @@
 # steam-webapi-ts
+
 [![npm](https://img.shields.io/npm/v/@j4ckofalltrades\/steam-webapi-ts)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/j4ckofalltrades/steam-webapi-ts/typescript)
+[![codecov](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts/branch/main/graph/badge.svg?token=LA1XCLYEP3)](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts)
 
 [![npm](https://nodei.co/npm/@j4ckofalltrades/steam-webapi-ts.png?compact=true)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
 
-Isomorphic wrapper for Steam's Web API in TypeScript.
+Isomorphic wrapper for Steam's WebAPI in TypeScript.
 
 ## Installation
 
@@ -30,7 +32,7 @@ then installing the package using `npm`.
 
 ## Usage
 
-**This requires a Steam Web API Key, you can get one at https://steamcommunity.com/dev/apikey**
+**This requires a Steam WebAPI Key, you can get one at https://steamcommunity.com/dev/apikey**
 
 You can use either the provided `SteamWebApi` wrapper
 

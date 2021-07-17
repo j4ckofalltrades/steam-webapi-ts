@@ -61,10 +61,10 @@ export class ISteamApps {
   /**
    * Check if a given app version is the most current available.
    *
-   * @param appid AppID of game
-   * @param version The installed version of the game
+   * @param appid AppID of game.
+   * @param version The installed version of the game.
    */
-  async upToDateCheck(appid: number, version: string): Promise<UpToDateCheck> {
+  async upToDateCheck(appid: AppId, version: string): Promise<UpToDateCheck> {
     return await this.http.get<UpToDateCheck>(
       UP_TO_DATE_CHECK,
       {

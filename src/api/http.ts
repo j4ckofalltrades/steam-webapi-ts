@@ -14,7 +14,6 @@ export class HttpClient {
       return response.data as T
     } catch (error) {
       const err = error as AxiosError
-      console.log(error)
       throw new Error(err.message)
     }
   }

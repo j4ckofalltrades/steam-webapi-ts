@@ -9,9 +9,10 @@ import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_
  * @property profilestate If set to 1 the user has configured the profile.
  * @property personaname User's display name.
  * @property profileurl The URL to the user's Steam Community profile.
- * @property avatar A 32x32 image
- * @property avatarmedium A 64x64 image
- * @property avatarfull A 184x184 image
+ * @property avatar A 32x32 image.
+ * @property avatarmedium A 64x64 image.
+ * @property avatarfull A 184x184 image.
+ * @property avatarhash Avatar identifier.
  * @property personastate The user's status.
  *           0 - Offline, 1 - Online, 2 - Busy, 3 - Away, 4 - Snooze, 5 - looking to trade, 6 - looking to play.
  * @property commentpermission (Optional) If present the profile allows public comments.
@@ -20,7 +21,7 @@ import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_
  * @property timecreated (Optional) A unix timestamp of the date the profile was created.
  * @property loccountrycode (Optional) ISO 3166 code of where the user is located.
  * @property locstatecode (Optional) Variable length code representing the state the user is located in.
- * @property cityid (Optional) An integer ID internal to Steam representing the user's city.
+ * @property loccityid (Optional) An integer ID internal to Steam representing the user's city.
  * @property gameid (Optional) If the user is in game this will be set to it's app ID as a string.
  * @property gameextrainfo (Optional) The title of the game.
  * @property gameserverip (Optional) The server URL given as an IP address and port number separated by a colon,
@@ -33,19 +34,21 @@ export type PlayerSummary = {
   avatar: string,
   avatarmedium: string,
   avatarfull: string,
+  avatarhash: string,
   personastate: number,
   communityvisibilitystate: number,
   profilestate: number,
-  commentpermission: string,
+  commentpermission?: string,
   realname?: string,
   primaryclanid?: string,
   timecreated?: number,
   gameid?: number,
   gameserverip?: string,
   gameextrainfo?: string,
-  cityid?: string,
+  loccityid?: number,
   loccountrycode?: string,
   locstatecode?: string,
+  personastateflags?: number,
 }
 
 /**
@@ -87,6 +90,8 @@ export type FriendList = {
  * @property CommunityBanned Boolean indicating whether or not the player is banned from Community.
  * @property VACBanned Boolean indicating whether or not the player has VAC bans on record.
  * @property NumberOfGameBans Number of bans in games.
+ * @property NumberOfVACBans Number of VAC bans.
+ * @property DaysSinceLastBan Days since last ban.
  * @property EconomyBan String containing the player's ban status in the economy. If the player has no bans on
  *           record the string will be "none", if the player is on probation it will say "probation", and so forth.
  */
@@ -94,7 +99,9 @@ export type PlayerBan = {
   SteamId: SteamId,
   CommunityBanned: boolean,
   VACBanned: boolean,
-  NumberOfGameBans: boolean,
+  NumberOfGameBans: number,
+  NumberOfVACBans: number,
+  DaysSinceLastBan: number,
   EconomyBan: string,
 }
 
@@ -189,7 +196,7 @@ export class ISteamUser {
   }
 
   /**
-   * User profile data
+   * User profile data.
    *
    * @param steamids Comma-delimited list of steam IDs.
    */
