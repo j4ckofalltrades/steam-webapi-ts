@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 node_modules/
+coverage/
 docs/
 esm/
 cjs/

@@ -1,7 +1,7 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
   "version": "0.1.2",
-  "description": "Isomorphic wrapper for Steam's Web API in TypeScript.",
+  "description": "Isomorphic wrapper for Steam's WebAPI in TypeScript.",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "types",

@@ -1,0 +1,24 @@
+name: Codecov
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Generate coverage report
+        run: |
+          npm install
+          npm run test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
