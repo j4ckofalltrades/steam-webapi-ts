@@ -9,10 +9,10 @@ export const ownedGamesMock = {
         playtime_forever: 10,
         playtime_windows_forever: 10,
         playtime_mac_forever: 0,
-        playtime_linux_forever: 0
-      }
-    ]
-  }
+        playtime_linux_forever: 0,
+      },
+    ],
+  },
 }
 
 export const playerBadgeProgressMock = {
@@ -20,14 +20,14 @@ export const playerBadgeProgressMock = {
     quests: [
       {
         questid: 115,
-        completed: true
+        completed: true,
       },
       {
         questid: 128,
-        completed: true
-      }
-    ]
-  }
+        completed: true,
+      },
+    ],
+  },
 }
 
 export const playerBadgesMock = {
@@ -38,26 +38,26 @@ export const playerBadgesMock = {
         level: 127,
         completion_time: 1622373519,
         xp: 356,
-        scarcity: 7098987
+        scarcity: 7098987,
       },
     ],
     player_xp: 706,
     player_level: 7,
     player_xp_needed_to_level_up: 94,
-    player_xp_needed_current_level: 700
-  }
+    player_xp_needed_current_level: 700,
+  },
 }
 
 export const playerLevelMock = {
   response: {
-    player_level: 7
-  }
+    player_level: 7,
+  },
 }
 
 export const playingSharedGameMock = {
   response: {
-    lender_steamid: "0"
-  }
+    lender_steamid: "0",
+  },
 }
 
 export const recentlyPlayedGamesMock = {
@@ -73,8 +73,8 @@ export const recentlyPlayedGamesMock = {
         img_logo_url: "d4f836839254be08d8e9dd333ecc9a01782c26d2",
         playtime_windows_forever: 37652,
         playtime_mac_forever: 0,
-        playtime_linux_forever: 6315
-      }
-    ]
-  }
+        playtime_linux_forever: 6315,
+      },
+    ],
+  },
 }

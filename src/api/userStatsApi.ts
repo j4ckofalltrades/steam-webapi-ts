@@ -6,7 +6,7 @@ import {
   GET_NUMBER_OF_CURRENT_PLAYERS,
   GET_PLAYER_ACHIEVEMENTS,
   GET_SCHEMA_FOR_GAME,
-  GET_USER_STATS_FOR_GAME
+  GET_USER_STATS_FOR_GAME,
 } from "./url"
 
 /**
@@ -14,7 +14,7 @@ import {
  */
 export type AchievementPercentages = {
   achievementpercentages: {
-    achievements: GlobalAchievement[],
+    achievements: GlobalAchievement[]
   }
 }
 
@@ -23,8 +23,8 @@ export type AchievementPercentages = {
  * @property percent Percentage of player population that has unlocked the achievement given as a double.
  */
 export type GlobalAchievement = {
-  name: string,
-  percent: number,
+  name: string
+  percent: number
 }
 
 /**
@@ -33,8 +33,8 @@ export type GlobalAchievement = {
  */
 export type CurrentPlayerCount = {
   response: {
-    player_count: number,
-    result: Result,
+    player_count: number
+    result: Result
   }
 }
 
@@ -44,10 +44,10 @@ export type CurrentPlayerCount = {
  * @property achievements List of achievements unlocked by the user.
  */
 export type PlayerStats = {
-  steamID: SteamId,
-  gameName: string,
-  achievements: PlayerAchievement[],
-  success: boolean,
+  steamID: SteamId
+  gameName: string
+  achievements: PlayerAchievement[]
+  success: boolean
 }
 
 // 1 if achievement has been unlocked, 0 if otherwise.
@@ -60,9 +60,9 @@ type PlayerAchievementStatus = 0 | 1
  * @property unlocktime A unix timestamp of the date when the achievement was unlocked.
  */
 export type PlayerAchievement = {
-  apiname: string,
-  achieved: PlayerAchievementStatus,
-  unlocktime: number,
+  apiname: string
+  achieved: PlayerAchievementStatus
+  unlocktime: number
 }
 
 /**
@@ -72,11 +72,11 @@ export type PlayerAchievement = {
  */
 export type GameSchema = {
   game: {
-    gameName: string,
-    gameVersion: string,
+    gameName: string
+    gameVersion: string
     availableGameStats: {
-      achievements: GameSchemaAchievements[],
-      stats: GameSchemaStats[],
+      achievements: GameSchemaAchievements[]
+      stats: GameSchemaStats[]
     }
   }
 }
@@ -91,13 +91,13 @@ export type GameSchema = {
  * @property icongray Absolute URL of un-earned achievement icon art.
  */
 export type GameSchemaAchievements = {
-  name: string,
-  defaultvalue: number,
-  displayName: string,
-  hidden: number,
-  description: string,
-  icon: string,
-  icongray: string,
+  name: string
+  defaultvalue: number
+  displayName: string
+  hidden: number
+  description: string
+  icon: string
+  icongray: string
 }
 
 /**
@@ -106,9 +106,9 @@ export type GameSchemaAchievements = {
  * @property displayName Developer provided name of stat.
  */
 export type GameSchemaStats = {
-  name: string,
-  defaultvalue: number,
-  displayName: string,
+  name: string
+  defaultvalue: number
+  displayName: string
 }
 
 /**
@@ -117,12 +117,12 @@ export type GameSchemaStats = {
  * @property achievements List of game achievements the user has unlocked.
  */
 export type GameUserStats = {
-  steamid: SteamId,
-  appid: AppId,
+  steamid: SteamId
+  appid: AppId
   achievements: {
-    name: string,
+    name: string
     achieved: number
-  }[],
+  }[]
 }
 
 /**
@@ -131,12 +131,12 @@ export type GameUserStats = {
  */
 export type GlobalStatsForGame = {
   response: {
-    result: number,
+    result: number
     globalstats: {
       [key: string]: {
         total: number
       }
-    }[],
+    }[]
   }
 }
 
@@ -144,10 +144,10 @@ export type GlobalStatsForGame = {
  * Methods relating to User stats.
  */
 export class ISteamUserStats {
-
   private readonly apiKey: WebApiKey
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param apiKey Steam Web API key.
    * @param http HTTP client.
@@ -164,13 +164,11 @@ export class ISteamUserStats {
    * with achievements available.
    */
   async getGlobalAchievementPercentagesForApp(gameid: AppId): Promise<AchievementPercentages> {
-    return await this.http.get<AchievementPercentages>(
-      GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
-      {
-        params: {
-          gameid,
-        }
-      })
+    return await this.http.get<AchievementPercentages>(GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP, {
+      params: {
+        gameid,
+      },
+    })
   }
 
   /**
@@ -179,14 +177,11 @@ export class ISteamUserStats {
    * @param appid AppID that we're getting user count for.
    */
   async getNumberOfCurrentPlayers(appid: AppId): Promise<CurrentPlayerCount> {
-    return await this.http.get<CurrentPlayerCount>(
-      GET_NUMBER_OF_CURRENT_PLAYERS,
-      {
-        params: {
-          appid,
-        }
-      }
-    )
+    return await this.http.get<CurrentPlayerCount>(GET_NUMBER_OF_CURRENT_PLAYERS, {
+      params: {
+        appid,
+      },
+    })
   }
 
   /**
@@ -198,16 +193,13 @@ export class ISteamUserStats {
    */
   async getPlayerAchievements(steamid: SteamId, appid: AppId, lang?: string): Promise<PlayerStats> {
     const l = lang !== undefined ? { l: lang } : undefined
-    return await this.http.get<PlayerStats>(
-      GET_PLAYER_ACHIEVEMENTS,
-      {
-        params: {
-          steamid,
-          appid,
-          ...l,
-        }
-      }
-    )
+    return await this.http.get<PlayerStats>(GET_PLAYER_ACHIEVEMENTS, {
+      params: {
+        steamid,
+        appid,
+        ...l,
+      },
+    })
   }
 
   /**
@@ -218,16 +210,13 @@ export class ISteamUserStats {
    */
   async getSchemaForGame(appid: AppId, lang?: string): Promise<GameSchema> {
     const l = lang !== undefined ? { l: lang } : undefined
-    return await this.http.get<GameSchema>(
-      GET_SCHEMA_FOR_GAME,
-      {
-        params: {
-          key: this.apiKey,
-          appid,
-          ...l,
-        }
-      }
-    )
+    return await this.http.get<GameSchema>(GET_SCHEMA_FOR_GAME, {
+      params: {
+        key: this.apiKey,
+        appid,
+        ...l,
+      },
+    })
   }
 
   /**
@@ -237,16 +226,13 @@ export class ISteamUserStats {
    * @param appid AppId of game.
    */
   async getUserStatsForGame(steamid: SteamId, appid: AppId): Promise<GameUserStats> {
-    return await this.http.get<GameUserStats>(
-      GET_USER_STATS_FOR_GAME,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-          appid,
-        }
-      }
-    )
+    return await this.http.get<GameUserStats>(GET_USER_STATS_FOR_GAME, {
+      params: {
+        key: this.apiKey,
+        steamid,
+        appid,
+      },
+    })
   }
 
   /**
@@ -265,15 +251,12 @@ export class ISteamUserStats {
       }
     }
 
-    return await this.http.get<GlobalStatsForGame>(
-      GET_GLOBAL_STATS_FOR_GAME,
-      {
-        params: {
-          ...requestParams,
-          appid,
-          count,
-        }
-      }
-    )
+    return await this.http.get<GlobalStatsForGame>(GET_GLOBAL_STATS_FOR_GAME, {
+      params: {
+        ...requestParams,
+        appid,
+        count,
+      },
+    })
   }
 }

@@ -3,8 +3,8 @@
 export const currentPlayersMock = {
   response: {
     player_count: 573500,
-    result: 1
-  }
+    result: 1,
+  },
 }
 
 export const gameSchemaMock = {
@@ -16,11 +16,11 @@ export const gameSchemaMock = {
         {
           name: "DOTA_SHOW_FULL_UI",
           defaultvalue: 0,
-          displayName: ""
-        }
-      ]
-    }
-  }
+          displayName: "",
+        },
+      ],
+    },
+  },
 }
 
 export const gameUserStatsMock = {
@@ -30,14 +30,14 @@ export const gameUserStatsMock = {
     achievements: [
       {
         name: "ACH_GRAB_PLAYER",
-        achieved: 1
+        achieved: 1,
       },
       {
         name: "ACH_QUALIFY_1_ROUND",
-        achieved: 1
+        achieved: 1,
       },
-    ]
-  }
+    ],
+  },
 }
 
 export const globalAchievementsMock = {
@@ -45,26 +45,26 @@ export const globalAchievementsMock = {
     achievements: [
       {
         name: "CHARMED",
-        percent: 75
+        percent: 75,
       },
       {
         name: "FK_DEFEAT",
-        percent: 68.9000015258789063
+        percent: 68.9000015258789063,
       },
       {
         name: "HORNET_1",
-        percent: 59.9000015258789063
+        percent: 59.9000015258789063,
       },
       {
         name: "STAG_STATION_HALF",
-        percent: 45.7000007629394531
+        percent: 45.7000007629394531,
       },
       {
         name: "PROTECTED",
-        percent: 44.2000007629394531
-      }
-    ]
-  }
+        percent: 44.2000007629394531,
+      },
+    ],
+  },
 }
 
 export const playerAchievementsMock = {
@@ -75,21 +75,21 @@ export const playerAchievementsMock = {
       {
         apiname: "CHARMED",
         achieved: 0,
-        unlocktime: 0
+        unlocktime: 0,
       },
       {
         apiname: "ENCHANTED",
         achieved: 0,
-        unlocktime: 0
+        unlocktime: 0,
       },
       {
         apiname: "BLESSED",
         achieved: 0,
-        unlocktime: 0
+        unlocktime: 0,
       },
     ],
     success: true,
-  }
+  },
 }
 
 export const globalStatsForGameMock = {
@@ -98,12 +98,12 @@ export const globalStatsForGameMock = {
     globalstats: [
       {
         stat_name_0: {
-          total: 123
+          total: 123,
         },
         stat_name_1: {
-          total: 345
-        }
-      }
-    ]
-  }
+          total: 345,
+        },
+      },
+    ],
+  },
 }

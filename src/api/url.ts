@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export const BASE_API_URL = "https://api.steampowered.com"
 
 // ISteamApps

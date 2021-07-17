@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import axios, { AxiosError, AxiosRequestConfig } from "axios"
 import { BASE_API_URL } from "./url"
 
@@ -5,8 +7,7 @@ import { BASE_API_URL } from "./url"
  * @ignore
  */
 export class HttpClient {
-
-  private readonly http = axios.create({ baseURL: BASE_API_URL, })
+  private readonly http = axios.create({ baseURL: BASE_API_URL })
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {

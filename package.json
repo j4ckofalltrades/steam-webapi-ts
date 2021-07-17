@@ -14,7 +14,8 @@
     "test": "jest --no-cache",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -47,8 +48,15 @@
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.1",
     "jest": "^27.0.4",
+    "lint-staged": "^11.0.1",
+    "prettier": "2.3.2",
     "ts-jest": "^27.0.3",
     "typedoc": "^0.21.0"
+  },
+  "lint-staged": {
+    "*.ts": ["eslint --cache --fix", "prettier --write src"]
   }
 }

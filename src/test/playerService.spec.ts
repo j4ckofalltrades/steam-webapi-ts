@@ -5,7 +5,7 @@ import {
   GET_OWNED_GAMES,
   GET_RECENTLY_PLAYED_GAMES,
   GET_STEAM_LEVEL,
-  IS_PLAYING_SHARED_GAME
+  IS_PLAYING_SHARED_GAME,
 } from "../api/url"
 import { IPlayerService } from "../api/playerService"
 import {
@@ -14,7 +14,7 @@ import {
   playerBadgesMock,
   playerLevelMock,
   playingSharedGameMock,
-  recentlyPlayedGamesMock
+  recentlyPlayedGamesMock,
 } from "../fixtures/playerServiceMock"
 
 jest.mock("../api/http")
@@ -44,15 +44,12 @@ describe("IPlayerService", () => {
       const response = await api.getRecentlyPlayedGames(steamid)
 
       expect(response).toEqual(recentlyPlayedGamesMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_RECENTLY_PLAYED_GAMES,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_RECENTLY_PLAYED_GAMES, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+        },
+      })
     })
   })
 
@@ -65,19 +62,16 @@ describe("IPlayerService", () => {
       const response = await api.getOwnedGames(steamid)
 
       expect(response).toEqual(ownedGamesMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_OWNED_GAMES,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-            // Whether or not to list free-to-play games in the results. Defaults to false.
-            include_appinfo: false,
-            // Whether or not to include additional details of apps - name and images. Defaults to false.
-            include_played_free_games: false,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_OWNED_GAMES, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          // Whether or not to list free-to-play games in the results. Defaults to false.
+          include_appinfo: false,
+          // Whether or not to include additional details of apps - name and images. Defaults to false.
+          include_played_free_games: false,
+        },
+      })
     })
   })
 
@@ -90,15 +84,12 @@ describe("IPlayerService", () => {
       const response = await api.getSteamLevel(steamid)
 
       expect(response).toEqual(playerLevelMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_STEAM_LEVEL,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_STEAM_LEVEL, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+        },
+      })
     })
   })
 
@@ -111,15 +102,12 @@ describe("IPlayerService", () => {
       const response = await api.getBadges(steamid)
 
       expect(response).toEqual(playerBadgesMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_BADGES,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_BADGES, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+        },
+      })
     })
   })
 
@@ -132,15 +120,12 @@ describe("IPlayerService", () => {
       const response = await api.getCommunityBadgeProgress(steamid)
 
       expect(response).toEqual(playerBadgeProgressMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_COMMUNITY_BADGE_PROGRESS,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_COMMUNITY_BADGE_PROGRESS, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+        },
+      })
     })
   })
 
@@ -154,16 +139,13 @@ describe("IPlayerService", () => {
       const response = await api.isPlayingSharedGame(steamid, appid_playing)
 
       expect(response).toEqual(playingSharedGameMock)
-      expect(httpMock.get).toBeCalledWith(
-        IS_PLAYING_SHARED_GAME,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-            appid_playing,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(IS_PLAYING_SHARED_GAME, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          appid_playing,
+        },
+      })
     })
   })
 })

@@ -7,7 +7,7 @@ import { AppId } from "./shared"
  */
 export type AppList = {
   applist: {
-    apps: App[],
+    apps: App[]
   }
 }
 
@@ -16,8 +16,8 @@ export type AppList = {
  * @property name A string containing the program's publicly facing title.
  */
 export type App = {
-  appid: AppId,
-  name: string,
+  appid: AppId
+  name: string
 }
 
 /**
@@ -29,11 +29,11 @@ export type App = {
  */
 export type UpToDateCheck = {
   response: {
-    success: boolean,
-    up_to_date: boolean,
-    version_is_listable: boolean,
-    required_version?: number,
-    message?: string,
+    success: boolean
+    up_to_date: boolean
+    version_is_listable: boolean
+    required_version?: number
+    message?: string
   }
 }
 
@@ -41,9 +41,9 @@ export type UpToDateCheck = {
  * Methods relating to Steam Apps in general.
  */
 export class ISteamApps {
-
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param http HTTP client.
    */
@@ -65,14 +65,11 @@ export class ISteamApps {
    * @param version The installed version of the game.
    */
   async upToDateCheck(appid: AppId, version: string): Promise<UpToDateCheck> {
-    return await this.http.get<UpToDateCheck>(
-      UP_TO_DATE_CHECK,
-      {
-        params: {
-          appid,
-          version,
-        }
-      }
-    )
+    return await this.http.get<UpToDateCheck>(UP_TO_DATE_CHECK, {
+      params: {
+        appid,
+        version,
+      },
+    })
   }
 }

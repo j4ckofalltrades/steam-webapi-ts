@@ -29,16 +29,13 @@ describe("ISteamNews", () => {
       const response = await api.getNewsForApp(appid)
 
       expect(response).toEqual(newsForAppMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_NEWS_FOR_APP,
-        {
-          params: {
-            appid,
-            // default number of post to retrieve
-            count: 20,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_NEWS_FOR_APP, {
+        params: {
+          appid,
+          // default number of post to retrieve
+          count: 20,
+        },
+      })
     })
   })
 })

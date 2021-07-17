@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { httpClient } from "./http"
 import { ISteamUser } from "./usersApi"
 import { WebApiKey } from "./shared"
@@ -11,7 +13,6 @@ import { ISteamWebAPIUtil } from "./webApiUtil"
  * Steam WebAPI wrapper.
  */
 export class SteamWebApi {
-
   private readonly _appsApi: ISteamApps
   private readonly _newsApi: ISteamNews
   private readonly _playerService: IPlayerService

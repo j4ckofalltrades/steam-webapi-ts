@@ -16,17 +16,17 @@ import { GET_NEWS_FOR_APP } from "./url"
  * @property appid AppID where the news item belong to.
  */
 export type NewsItem = {
-  gid: string,
-  title: string,
-  url: string,
-  is_external_url: boolean,
-  author: string,
-  contents: string,
-  feedlabel: string,
-  date: number,
-  feedname: string,
-  feed_type: number,
-  appid: AppId,
+  gid: string
+  title: string
+  url: string
+  is_external_url: boolean
+  author: string
+  contents: string
+  feedlabel: string
+  date: number
+  feedname: string
+  feed_type: number
+  appid: AppId
 }
 
 /**
@@ -35,8 +35,8 @@ export type NewsItem = {
  */
 export type AppNews = {
   appnews: {
-    appid: AppId,
-    newsitems: NewsItem[],
+    appid: AppId
+    newsitems: NewsItem[]
   }
 }
 
@@ -48,19 +48,19 @@ export type AppNews = {
  * @property feeds (Optional) Comma-separated list of feed names to return news for.
  */
 export type NewsForAppParams = {
-  maxlength?: number,
-  enddate?: number,
-  count?: number,
-  feeds?: string,
+  maxlength?: number
+  enddate?: number
+  count?: number
+  feeds?: string
 }
 
 /**
  * Methods relating to Steam News.
  */
 export class ISteamNews {
-
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param http HTTP client.
    */
@@ -80,17 +80,14 @@ export class ISteamNews {
     const count = request?.count !== undefined ? { count: request.count } : { count: 20 }
     const feeds = request?.feeds !== undefined ? { feeds: request.feeds } : undefined
 
-    return await this.http.get<AppNews>(
-      GET_NEWS_FOR_APP,
-      {
-        params: {
-          appid,
-          ...maxlength,
-          ...enddate,
-          ...count,
-          ...feeds,
-        }
-      }
-    )
+    return await this.http.get<AppNews>(GET_NEWS_FOR_APP, {
+      params: {
+        appid,
+        ...maxlength,
+        ...enddate,
+        ...count,
+        ...feeds,
+      },
+    })
   }
 }

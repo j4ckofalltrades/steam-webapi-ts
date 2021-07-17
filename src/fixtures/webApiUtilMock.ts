@@ -2,7 +2,7 @@
 
 export const serverInfoMock = {
   servertime: 1625396869,
-  servertimestring: "Sun Jul  4 04:07:49 2021"
+  servertimestring: "Sun Jul  4 04:07:49 2021",
 }
 
 export const supportedAPIMock = {
@@ -15,7 +15,7 @@ export const supportedAPIMock = {
             name: "GetServerInfo",
             version: 1,
             httpmethod: "GET",
-            parameters: []
+            parameters: [],
           },
           {
             name: "GetSupportedAPIList",
@@ -26,12 +26,12 @@ export const supportedAPIMock = {
                 name: "key",
                 type: "string",
                 optional: true,
-                description: "access key"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+                description: "access key",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 }

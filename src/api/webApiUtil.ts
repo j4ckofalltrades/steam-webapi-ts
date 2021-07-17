@@ -7,8 +7,8 @@ import { WebApiKey } from "./shared"
  * @property servertimestring Time string of WebAPI server.
  */
 export type ServerInfo = {
-  servertime: number,
-  servertimestring: string,
+  servertime: number
+  servertimestring: string
 }
 
 /**
@@ -18,10 +18,10 @@ export type ServerInfo = {
  * @property description API Documentation of parameter.
  */
 type ApiParam = {
-  name: string,
-  type: string,
-  optional: boolean,
-  description: string,
+  name: string
+  type: string
+  optional: boolean
+  description: string
 }
 
 /**
@@ -30,10 +30,10 @@ type ApiParam = {
  * @property httpmethod Allowed HTTP method for method (GET, POST).
  */
 type ApiMethod = {
-  name: string,
-  version: number,
-  httpmethod: string,
-  parameters: ApiParam[],
+  name: string
+  version: number
+  httpmethod: string
+  parameters: ApiParam[]
 }
 
 /**
@@ -44,8 +44,8 @@ type ApiMethod = {
 export type SupportedAPI = {
   apilist: {
     interfaces: {
-      name: string,
-      methods: ApiMethod[],
+      name: string
+      methods: ApiMethod[]
     }[]
   }[]
 }
@@ -54,9 +54,9 @@ export type SupportedAPI = {
  * Methods relating to the WebAPI itself.
  */
 export class ISteamWebAPIUtil {
-
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param http HTTP client.
    */
@@ -79,13 +79,10 @@ export class ISteamWebAPIUtil {
    */
   async getSupportedAPIList(apiKey?: WebApiKey): Promise<SupportedAPI> {
     const key = apiKey !== undefined ? { key: apiKey } : undefined
-    return await this.http.get<SupportedAPI>(
-      GET_SUPPORTED_API_LIST,
-      {
-        params: {
-          ...key,
-        }
-      }
-    )
+    return await this.http.get<SupportedAPI>(GET_SUPPORTED_API_LIST, {
+      params: {
+        ...key,
+      },
+    })
   }
 }

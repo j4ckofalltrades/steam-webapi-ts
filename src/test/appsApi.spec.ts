@@ -43,15 +43,12 @@ describe("ISteamApps", () => {
       const response = await api.upToDateCheck(appid, version)
 
       expect(response).toEqual(upToDateCheckMock)
-      expect(httpMock.get).toBeCalledWith(
-        UP_TO_DATE_CHECK,
-        {
-          params: {
-            appid,
-            version,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(UP_TO_DATE_CHECK, {
+        params: {
+          appid,
+          version,
+        },
+      })
     })
   })
 })

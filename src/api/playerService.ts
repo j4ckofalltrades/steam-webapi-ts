@@ -5,7 +5,8 @@ import {
   GET_COMMUNITY_BADGE_PROGRESS,
   GET_OWNED_GAMES,
   GET_RECENTLY_PLAYED_GAMES,
-  GET_STEAM_LEVEL, IS_PLAYING_SHARED_GAME
+  GET_STEAM_LEVEL,
+  IS_PLAYING_SHARED_GAME,
 } from "./url"
 
 /**
@@ -24,15 +25,15 @@ import {
  * @property playtime_linux_forever An integer of the the player's total playtime on Linux, denoted in minutes.
  */
 export type Game = {
-  appid: string,
-  name: string,
-  playtime_2weeks: number,
-  playtime_forever: number,
-  img_icon_url: string,
-  img_logo_url: string,
-  playtime_windows_forever: number,
-  playtime_mac_forever: number,
-  playtime_linux_forever: number,
+  appid: string
+  name: string
+  playtime_2weeks: number
+  playtime_forever: number
+  img_icon_url: string
+  img_logo_url: string
+  playtime_windows_forever: number
+  playtime_mac_forever: number
+  playtime_linux_forever: number
 }
 
 /**
@@ -41,8 +42,8 @@ export type Game = {
  */
 export type RecentlyPlayedGames = {
   response: {
-    total_count: number,
-    games: Game[],
+    total_count: number
+    games: Game[]
   }
 }
 
@@ -51,7 +52,7 @@ export type RecentlyPlayedGames = {
  *           {@link ISteamUserStats.getUserStatsForGame} and {@link ISteamUserStats.getGlobalStatsForGame}.
  */
 export type OwnedGame = Partial<Game> & {
-  has_community_visible_stats: boolean,
+  has_community_visible_stats: boolean
 }
 
 /**
@@ -60,8 +61,8 @@ export type OwnedGame = Partial<Game> & {
  */
 export type OwnedGames = {
   response: {
-    game_count: number,
-    games: OwnedGame[],
+    game_count: number
+    games: OwnedGame[]
   }
 }
 
@@ -74,9 +75,9 @@ export type OwnedGames = {
  *           like "appids_filter[0]=440&appids_filter[1]=570".
  */
 export type GetOwnedGamesParams = {
-  include_appinfo?: boolean,
-  include_played_free_games?: boolean,
-  appids_filter?: number[],
+  include_appinfo?: boolean
+  include_played_free_games?: boolean
+  appids_filter?: number[]
 }
 
 /**
@@ -84,7 +85,7 @@ export type GetOwnedGamesParams = {
  */
 export type SteamLevel = {
   response: {
-    player_level: number,
+    player_level: number
   }
 }
 
@@ -100,14 +101,14 @@ export type SteamLevel = {
  * @property scarcity The amount of people who has this badge.
  */
 export type Badge = {
-  badgeid: number,
-  appid?: AppId,
-  level: number,
-  completion_time: number,
-  xp: number,
-  communityitemid?: number,
-  border_color: string,
-  scarcity: number,
+  badgeid: number
+  appid?: AppId
+  level: number
+  completion_time: number
+  xp: number
+  communityitemid?: number
+  border_color: string
+  scarcity: number
 }
 
 /**
@@ -115,11 +116,11 @@ export type Badge = {
  */
 export type PlayerBadges = {
   response: {
-    badges: Badge[],
-    player_xp: number,
-    player_level: number,
-    player_xp_needed_to_level_up: number,
-    player_xp_needed_current_level: number,
+    badges: Badge[]
+    player_xp: number
+    player_level: number
+    player_xp_needed_to_level_up: number
+    player_xp_needed_current_level: number
   }
 }
 
@@ -131,8 +132,8 @@ export type PlayerBadges = {
 export type BadgeProgress = {
   response: {
     quests: {
-      questid: string,
-      completed: boolean,
+      questid: string
+      completed: boolean
     }[]
   }
 }
@@ -142,7 +143,7 @@ export type BadgeProgress = {
  */
 export type SharedGameDetails = {
   response: {
-    lender_steamid: SteamId,
+    lender_steamid: SteamId
   }
 }
 
@@ -150,10 +151,10 @@ export type SharedGameDetails = {
  * Methods relating to a Steam user's games.
  */
 export class IPlayerService {
-
   private readonly apiKey: WebApiKey
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param apiKey Steam Web API key.
    * @param http Http client.
@@ -170,16 +171,13 @@ export class IPlayerService {
    * @param count The number of games to return (0/unset: all).
    */
   async getRecentlyPlayedGames(steamid: SteamId, count?: number): Promise<RecentlyPlayedGames> {
-    return await this.http.get<RecentlyPlayedGames>(
-      GET_RECENTLY_PLAYED_GAMES,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-          count,
-        }
-      }
-    )
+    return await this.http.get<RecentlyPlayedGames>(GET_RECENTLY_PLAYED_GAMES, {
+      params: {
+        key: this.apiKey,
+        steamid,
+        count,
+      },
+    })
   }
 
   /**
@@ -195,27 +193,24 @@ export class IPlayerService {
       for (let i = 0; i < appids.length; i++) {
         requestParams = {
           ...requestParams,
-          [`appids_filter[${ i }]`]: appids[i],
+          [`appids_filter[${i}]`]: appids[i],
         }
       }
     }
 
     const include_appinfo = request?.include_appinfo !== undefined ? request.include_appinfo : false
-    const include_played_free_games = request?.include_played_free_games !== undefined
-      ? request.include_played_free_games : false
+    const include_played_free_games =
+      request?.include_played_free_games !== undefined ? request.include_played_free_games : false
 
-    return await this.http.get<OwnedGames>(
-      GET_OWNED_GAMES,
-      {
-        params: {
-          ...requestParams,
-          key: this.apiKey,
-          steamid,
-          include_appinfo,
-          include_played_free_games,
-        }
-      }
-    )
+    return await this.http.get<OwnedGames>(GET_OWNED_GAMES, {
+      params: {
+        ...requestParams,
+        key: this.apiKey,
+        steamid,
+        include_appinfo,
+        include_played_free_games,
+      },
+    })
   }
 
   /**
@@ -224,15 +219,12 @@ export class IPlayerService {
    * @param steamid The player we're asking about.
    */
   async getSteamLevel(steamid: SteamId): Promise<SteamLevel> {
-    return await this.http.get<SteamLevel>(
-      GET_STEAM_LEVEL,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-        }
-      }
-    )
+    return await this.http.get<SteamLevel>(GET_STEAM_LEVEL, {
+      params: {
+        key: this.apiKey,
+        steamid,
+      },
+    })
   }
 
   /**
@@ -241,15 +233,12 @@ export class IPlayerService {
    * @param steamid The player we're asking about.
    */
   async getBadges(steamid: SteamId): Promise<PlayerBadges> {
-    return await this.http.get<PlayerBadges>(
-      GET_BADGES,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-        }
-      }
-    )
+    return await this.http.get<PlayerBadges>(GET_BADGES, {
+      params: {
+        key: this.apiKey,
+        steamid,
+      },
+    })
   }
 
   /**
@@ -260,16 +249,13 @@ export class IPlayerService {
    */
   async getCommunityBadgeProgress(steamid: SteamId, badge?: number): Promise<BadgeProgress> {
     const badgeid = badge !== undefined ? { badgeid: badge } : undefined
-    return await this.http.get<BadgeProgress>(
-      GET_COMMUNITY_BADGE_PROGRESS,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-          badgeid,
-        }
-      }
-    )
+    return await this.http.get<BadgeProgress>(GET_COMMUNITY_BADGE_PROGRESS, {
+      params: {
+        key: this.apiKey,
+        steamid,
+        badgeid,
+      },
+    })
   }
 
   /**
@@ -279,15 +265,12 @@ export class IPlayerService {
    * @param appid_playing The game player is currently playing.
    */
   async isPlayingSharedGame(steamid: SteamId, appid_playing: AppId): Promise<SharedGameDetails> {
-    return await this.http.get<SharedGameDetails>(
-      IS_PLAYING_SHARED_GAME,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-          appid_playing,
-        }
-      }
-    )
+    return await this.http.get<SharedGameDetails>(IS_PLAYING_SHARED_GAME, {
+      params: {
+        key: this.apiKey,
+        steamid,
+        appid_playing,
+      },
+    })
   }
 }

@@ -1,10 +1,11 @@
 import { HttpClient } from "../api/http"
 import {
   currentPlayersMock,
-  gameSchemaMock, gameUserStatsMock,
+  gameSchemaMock,
+  gameUserStatsMock,
   globalAchievementsMock,
   globalStatsForGameMock,
-  playerAchievementsMock
+  playerAchievementsMock,
 } from "../fixtures/userStatsMock"
 import {
   GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
@@ -12,7 +13,7 @@ import {
   GET_NUMBER_OF_CURRENT_PLAYERS,
   GET_PLAYER_ACHIEVEMENTS,
   GET_SCHEMA_FOR_GAME,
-  GET_USER_STATS_FOR_GAME
+  GET_USER_STATS_FOR_GAME,
 } from "../api/url"
 import { ISteamUserStats } from "../api/userStatsApi"
 
@@ -45,14 +46,11 @@ describe("ISteamUserStats", () => {
       const response = await api.getGlobalAchievementPercentagesForApp(gameid)
 
       expect(response).toEqual(globalAchievementsMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
-        {
-          params: {
-            gameid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP, {
+        params: {
+          gameid,
+        },
+      })
     })
   })
 
@@ -65,14 +63,11 @@ describe("ISteamUserStats", () => {
       const response = await api.getNumberOfCurrentPlayers(appid)
 
       expect(response).toEqual(currentPlayersMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_NUMBER_OF_CURRENT_PLAYERS,
-        {
-          params: {
-            appid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_NUMBER_OF_CURRENT_PLAYERS, {
+        params: {
+          appid,
+        },
+      })
     })
   })
 
@@ -85,15 +80,12 @@ describe("ISteamUserStats", () => {
       const response = await api.getPlayerAchievements(steamid, appid)
 
       expect(response).toEqual(playerAchievementsMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_PLAYER_ACHIEVEMENTS,
-        {
-          params: {
-            steamid,
-            appid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_PLAYER_ACHIEVEMENTS, {
+        params: {
+          steamid,
+          appid,
+        },
+      })
     })
   })
 
@@ -107,16 +99,13 @@ describe("ISteamUserStats", () => {
       const response = await api.getSchemaForGame(appid, l)
 
       expect(response).toEqual(gameSchemaMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_SCHEMA_FOR_GAME,
-        {
-          params: {
-            key: apiKeyTest,
-            appid,
-            l,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_SCHEMA_FOR_GAME, {
+        params: {
+          key: apiKeyTest,
+          appid,
+          l,
+        },
+      })
     })
   })
 
@@ -129,16 +118,13 @@ describe("ISteamUserStats", () => {
       const response = await api.getUserStatsForGame(steamid, appid)
 
       expect(response).toEqual(gameUserStatsMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_USER_STATS_FOR_GAME,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-            appid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_USER_STATS_FOR_GAME, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          appid,
+        },
+      })
     })
   })
 
@@ -152,17 +138,14 @@ describe("ISteamUserStats", () => {
       const response = await api.getGlobalStatsForGame(appid, count, ["stat_1", "stat_2"])
 
       expect(response).toEqual(globalStatsForGameMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_GLOBAL_STATS_FOR_GAME,
-        {
-          params: {
-            appid,
-            count,
-            "name[0]": "stat_1",
-            "name[1]": "stat_2",
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_GLOBAL_STATS_FOR_GAME, {
+        params: {
+          appid,
+          count,
+          "name[0]": "stat_1",
+          "name[1]": "stat_2",
+        },
+      })
     })
   })
 })

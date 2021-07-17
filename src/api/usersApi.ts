@@ -28,27 +28,27 @@ import { GET_FRIEND_LIST, GET_PLAYER_BANS, GET_PLAYER_SUMMARIES, GET_USER_GROUP_
  *           this will not be present or set to "0.0.0.0:0" if none is available.
  */
 export type PlayerSummary = {
-  steamid: SteamId,
-  personaname: string,
-  profileurl: string,
-  avatar: string,
-  avatarmedium: string,
-  avatarfull: string,
-  avatarhash: string,
-  personastate: number,
-  communityvisibilitystate: number,
-  profilestate: number,
-  commentpermission?: string,
-  realname?: string,
-  primaryclanid?: string,
-  timecreated?: number,
-  gameid?: number,
-  gameserverip?: string,
-  gameextrainfo?: string,
-  loccityid?: number,
-  loccountrycode?: string,
-  locstatecode?: string,
-  personastateflags?: number,
+  steamid: SteamId
+  personaname: string
+  profileurl: string
+  avatar: string
+  avatarmedium: string
+  avatarfull: string
+  avatarhash: string
+  personastate: number
+  communityvisibilitystate: number
+  profilestate: number
+  commentpermission?: string
+  realname?: string
+  primaryclanid?: string
+  timecreated?: number
+  gameid?: number
+  gameserverip?: string
+  gameextrainfo?: string
+  loccityid?: number
+  loccountrycode?: string
+  locstatecode?: string
+  personastateflags?: number
 }
 
 /**
@@ -57,7 +57,7 @@ export type PlayerSummary = {
  */
 export type PlayerSummaries = {
   response: {
-    players: PlayerSummary[],
+    players: PlayerSummary[]
   }
 }
 
@@ -69,9 +69,9 @@ export type FriendRelationship = "all" | "friend"
  * @property friend_since A unix timestamp of when the friend was added to the list.
  */
 export type Friend = {
-  steamid: SteamId,
-  relationship: FriendRelationship,
-  friend_since: number,
+  steamid: SteamId
+  relationship: FriendRelationship
+  friend_since: number
 }
 
 /**
@@ -81,7 +81,7 @@ export type Friend = {
  */
 export type FriendList = {
   friendslist: {
-    friends: Friend[],
+    friends: Friend[]
   }
 }
 
@@ -96,27 +96,27 @@ export type FriendList = {
  *           record the string will be "none", if the player is on probation it will say "probation", and so forth.
  */
 export type PlayerBan = {
-  SteamId: SteamId,
-  CommunityBanned: boolean,
-  VACBanned: boolean,
-  NumberOfGameBans: number,
-  NumberOfVACBans: number,
-  DaysSinceLastBan: number,
-  EconomyBan: string,
+  SteamId: SteamId
+  CommunityBanned: boolean
+  VACBanned: boolean
+  NumberOfGameBans: number
+  NumberOfVACBans: number
+  DaysSinceLastBan: number
+  EconomyBan: string
 }
 
 /**
  * @property players List of player ban objects for each given (and valid) 64 bit ID.
  */
 export type PlayerBans = {
-  players: PlayerBan[],
+  players: PlayerBan[]
 }
 
 /**
  * @property gid 64 bit ID number of group.
  */
 export type UserGroup = {
-  gid: string,
+  gid: string
 }
 
 /**
@@ -125,8 +125,8 @@ export type UserGroup = {
  */
 export type UserGroups = {
   response: {
-    success: boolean,
-    groups: UserGroup[],
+    success: boolean
+    groups: UserGroup[]
   }
 }
 
@@ -138,9 +138,9 @@ export type UserGroups = {
  */
 export type VanityURLResolved = {
   response: {
-    success: Result,
-    steamid?: string,
-    message?: string,
+    success: Result
+    steamid?: string
+    message?: string
   }
 }
 
@@ -148,10 +148,10 @@ export type VanityURLResolved = {
  * Methods relating to Steam users.
  */
 export class ISteamUser {
-
   private readonly apiKey: WebApiKey
   private readonly http: HttpClient
 
+  /* istanbul ignore next */
   /**
    * @param apiKey Steam Web API key.
    * @param http Http client.
@@ -168,15 +168,13 @@ export class ISteamUser {
    * @param relationship Filter by a given role. Possible options are *all* (All roles), *friend*.
    * */
   async getFriendList(steamid: SteamId, relationship: FriendRelationship): Promise<FriendList> {
-    return await this.http.get<FriendList>(
-      GET_FRIEND_LIST,
-      {
-        params: {
-          key: this.apiKey,
-          steamid: steamid,
-          relationship,
-        }
-      })
+    return await this.http.get<FriendList>(GET_FRIEND_LIST, {
+      params: {
+        key: this.apiKey,
+        steamid: steamid,
+        relationship,
+      },
+    })
   }
 
   /**
@@ -185,14 +183,12 @@ export class ISteamUser {
    * @param steamids Comma-delimited list of steam IDs.
    */
   async getPlayerBans(steamids: SteamId[]): Promise<PlayerBans> {
-    return await this.http.get<PlayerBans>(
-      GET_PLAYER_BANS,
-      {
-        params: {
-          key: this.apiKey,
-          steamids: JSON.stringify(steamids),
-        }
-      })
+    return await this.http.get<PlayerBans>(GET_PLAYER_BANS, {
+      params: {
+        key: this.apiKey,
+        steamids: JSON.stringify(steamids),
+      },
+    })
   }
 
   /**
@@ -201,14 +197,12 @@ export class ISteamUser {
    * @param steamids Comma-delimited list of steam IDs.
    */
   async getPlayerSummaries(steamids: SteamId[]): Promise<PlayerSummaries> {
-    return await this.http.get<PlayerSummaries>(
-      GET_PLAYER_SUMMARIES,
-      {
-        params: {
-          key: this.apiKey,
-          steamids: JSON.stringify(steamids),
-        }
-      })
+    return await this.http.get<PlayerSummaries>(GET_PLAYER_SUMMARIES, {
+      params: {
+        key: this.apiKey,
+        steamids: JSON.stringify(steamids),
+      },
+    })
   }
 
   /**
@@ -217,14 +211,12 @@ export class ISteamUser {
    * @param steamid The 64 bit ID of the user.
    */
   async getUserGroupList(steamid: SteamId): Promise<UserGroups> {
-    return await this.http.get<UserGroups>(
-      GET_USER_GROUP_LIST,
-      {
-        params: {
-          key: this.apiKey,
-          steamid,
-        }
-      })
+    return await this.http.get<UserGroups>(GET_USER_GROUP_LIST, {
+      params: {
+        key: this.apiKey,
+        steamid,
+      },
+    })
   }
 
   /**
@@ -234,13 +226,11 @@ export class ISteamUser {
    *        e.g. http://steamcommunity.com/id/gabelogannewell would use "gabelogannewell".
    */
   async resolveVanityURL(vanityurl: string): Promise<VanityURLResolved> {
-    return await this.http.get<VanityURLResolved>(
-      RESOLVE_VANITY_URL,
-      {
-        params: {
-          key: this.apiKey,
-          vanityurl,
-        }
-      })
+    return await this.http.get<VanityURLResolved>(RESOLVE_VANITY_URL, {
+      params: {
+        key: this.apiKey,
+        vanityurl,
+      },
+    })
   }
 }

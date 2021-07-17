@@ -12,7 +12,7 @@ import {
   PlayerBadges,
   RecentlyPlayedGames,
   SharedGameDetails,
-  SteamLevel
+  SteamLevel,
 } from "./api/playerService"
 import { AppId, SteamId, WebApiKey } from "./api/shared"
 import {
@@ -25,7 +25,7 @@ import {
   PlayerSummary,
   UserGroup,
   UserGroups,
-  VanityURLResolved
+  VanityURLResolved,
 } from "./api/usersApi"
 import {
   AchievementPercentages,
@@ -38,7 +38,7 @@ import {
   GlobalStatsForGame,
   ISteamUserStats,
   PlayerAchievement,
-  PlayerStats
+  PlayerStats,
 } from "./api/userStatsApi"
 import { ISteamWebAPIUtil, ServerInfo, SupportedAPI } from "./api/webApiUtil"
 
@@ -79,14 +79,6 @@ export type {
   UserGroup,
   UserGroups,
   VanityURLResolved,
-  WebApiKey
+  WebApiKey,
 }
-export {
-  IPlayerService,
-  ISteamApps,
-  ISteamNews,
-  ISteamUser,
-  ISteamUserStats,
-  ISteamWebAPIUtil,
-  SteamWebApi
-}
+export { IPlayerService, ISteamApps, ISteamNews, ISteamUser, ISteamUserStats, ISteamWebAPIUtil, SteamWebApi }

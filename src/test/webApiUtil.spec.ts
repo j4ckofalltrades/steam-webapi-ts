@@ -42,14 +42,11 @@ describe("ISteamWebAPIUtil", () => {
       const response = await api.getSupportedAPIList(apiKey)
 
       expect(response).toEqual(supportedAPIMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_SUPPORTED_API_LIST,
-        {
-          params: {
-            key: apiKey,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_SUPPORTED_API_LIST, {
+        params: {
+          key: apiKey,
+        },
+      })
     })
   })
 })

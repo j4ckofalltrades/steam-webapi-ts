@@ -4,7 +4,7 @@ import {
   playerBansMock,
   playerSummariesMock,
   userGroupListMock,
-  vanityURLResolvedMock
+  vanityURLResolvedMock,
 } from "../fixtures/userMock"
 import { HttpClient } from "../api/http"
 import {
@@ -12,7 +12,7 @@ import {
   GET_PLAYER_BANS,
   GET_PLAYER_SUMMARIES,
   GET_USER_GROUP_LIST,
-  RESOLVE_VANITY_URL
+  RESOLVE_VANITY_URL,
 } from "../api/url"
 
 jest.mock("../api/http")
@@ -43,16 +43,13 @@ describe("ISteamUser", () => {
       const response = await api.getFriendList(steamid, relationship)
 
       expect(response).toEqual(friendsListMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_FRIEND_LIST,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-            relationship,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_FRIEND_LIST, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          relationship,
+        },
+      })
     })
   })
 
@@ -66,15 +63,12 @@ describe("ISteamUser", () => {
       const response = await api.getPlayerBans(steamids)
 
       expect(response).toEqual(playerBansMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_PLAYER_BANS,
-        {
-          params: {
-            key: apiKeyTest,
-            steamids: JSON.stringify(steamids),
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_PLAYER_BANS, {
+        params: {
+          key: apiKeyTest,
+          steamids: JSON.stringify(steamids),
+        },
+      })
     })
   })
 
@@ -88,15 +82,12 @@ describe("ISteamUser", () => {
       const response = await api.getPlayerSummaries(steamids)
 
       expect(response).toEqual(playerSummariesMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_PLAYER_SUMMARIES,
-        {
-          params: {
-            key: apiKeyTest,
-            steamids: JSON.stringify(steamids),
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_PLAYER_SUMMARIES, {
+        params: {
+          key: apiKeyTest,
+          steamids: JSON.stringify(steamids),
+        },
+      })
     })
   })
 
@@ -110,15 +101,12 @@ describe("ISteamUser", () => {
       const response = await api.getUserGroupList(steamid)
 
       expect(response).toEqual(userGroupListMock)
-      expect(httpMock.get).toBeCalledWith(
-        GET_USER_GROUP_LIST,
-        {
-          params: {
-            key: apiKeyTest,
-            steamid,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(GET_USER_GROUP_LIST, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+        },
+      })
     })
   })
 
@@ -132,15 +120,12 @@ describe("ISteamUser", () => {
       const response = await api.resolveVanityURL(vanityurl)
 
       expect(response).toEqual(vanityURLResolvedMock)
-      expect(httpMock.get).toBeCalledWith(
-        RESOLVE_VANITY_URL,
-        {
-          params: {
-            key: apiKeyTest,
-            vanityurl,
-          }
-        }
-      )
+      expect(httpMock.get).toBeCalledWith(RESOLVE_VANITY_URL, {
+        params: {
+          key: apiKeyTest,
+          vanityurl,
+        },
+      })
     })
   })
 })
