@@ -188,7 +188,7 @@ export class IPlayerService {
    */
   async getOwnedGames(steamid: SteamId, request?: GetOwnedGamesParams): Promise<OwnedGames> {
     let requestParams = {}
-    if (request?.appids_filter !== undefined && request?.appids_filter.length > 0) {
+    if (request?.appids_filter !== undefined) {
       const appids = request?.appids_filter
       for (let i = 0; i < appids.length; i++) {
         requestParams = {
@@ -253,7 +253,7 @@ export class IPlayerService {
       params: {
         key: this.apiKey,
         steamid,
-        badgeid,
+        ...badgeid,
       },
     })
   }

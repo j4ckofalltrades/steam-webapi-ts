@@ -1,5 +1,5 @@
 import { HttpClient } from "../api/http"
-import { ISteamNews } from "../api/newsApi"
+import { ISteamNews, NewsForAppParams } from "../api/newsApi"
 import { newsForAppMock } from "../fixtures/newsMock"
 import { GET_NEWS_FOR_APP } from "../api/url"
 
@@ -18,6 +18,7 @@ beforeEach(() => {
 
 describe("ISteamNews", () => {
   const { httpMock, api } = setup()
+  const appid = 570
 
   describe("getNewsForApp", () => {
     beforeEach(() => {
@@ -25,15 +26,31 @@ describe("ISteamNews", () => {
     })
 
     it("should return news for app", async () => {
-      const appid = 570
       const response = await api.getNewsForApp(appid)
-
       expect(response).toEqual(newsForAppMock)
       expect(httpMock.get).toBeCalledWith(GET_NEWS_FOR_APP, {
         params: {
           appid,
-          // default number of post to retrieve
+          // default number of posts to retrieve
           count: 20,
+        },
+      })
+    })
+
+    it("should return news for app filtered by params", async () => {
+      const newsForAppParams: NewsForAppParams = {
+        maxlength: 10,
+        enddate: new Date().getDate(),
+        count: 10,
+        feeds: "default",
+      }
+
+      const response = await api.getNewsForApp(appid, newsForAppParams)
+      expect(response).toEqual(newsForAppMock)
+      expect(httpMock.get).toBeCalledWith(GET_NEWS_FOR_APP, {
+        params: {
+          appid,
+          ...newsForAppParams,
         },
       })
     })

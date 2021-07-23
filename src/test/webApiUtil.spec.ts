@@ -38,6 +38,13 @@ describe("ISteamWebAPIUtil", () => {
       HttpClientMock.prototype.get.mockResolvedValue(supportedAPIMock)
     })
 
+    it("should return supported API list when requesting without an api key", async () => {
+      const response = await api.getSupportedAPIList()
+
+      expect(response).toEqual(supportedAPIMock)
+      expect(httpMock.get).toBeCalledWith(GET_SUPPORTED_API_LIST, { params: {} })
+    })
+
     it("should return supported API list", async () => {
       const response = await api.getSupportedAPIList(apiKey)
 

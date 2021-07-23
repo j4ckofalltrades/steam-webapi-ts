@@ -36,6 +36,7 @@ describe("ISteamUserStats", () => {
   const steamid = "12345678910"
   const appid = 1097150
   const gameid = 570
+  const lang = "en"
 
   describe("getGlobalAchievementPercentagesForApp", () => {
     beforeEach(() => {
@@ -78,12 +79,21 @@ describe("ISteamUserStats", () => {
 
     it("should return list of achievements the user has unlocked for the app", async () => {
       const response = await api.getPlayerAchievements(steamid, appid)
-
       expect(response).toEqual(playerAchievementsMock)
       expect(httpMock.get).toBeCalledWith(GET_PLAYER_ACHIEVEMENTS, {
         params: {
           steamid,
           appid,
+        },
+      })
+
+      const responseWithLang = await api.getPlayerAchievements(steamid, appid, lang)
+      expect(responseWithLang).toEqual(playerAchievementsMock)
+      expect(httpMock.get).toBeCalledWith(GET_PLAYER_ACHIEVEMENTS, {
+        params: {
+          steamid,
+          appid,
+          l: lang,
         },
       })
     })
@@ -95,15 +105,22 @@ describe("ISteamUserStats", () => {
     })
 
     it("should return list of available achievements and stats for the game", async () => {
-      const l = "en"
-      const response = await api.getSchemaForGame(appid, l)
+      const responseWithLang = await api.getSchemaForGame(appid, lang)
+      expect(responseWithLang).toEqual(gameSchemaMock)
+      expect(httpMock.get).toBeCalledWith(GET_SCHEMA_FOR_GAME, {
+        params: {
+          key: apiKeyTest,
+          appid,
+          l: lang,
+        },
+      })
 
+      const response = await api.getSchemaForGame(appid)
       expect(response).toEqual(gameSchemaMock)
       expect(httpMock.get).toBeCalledWith(GET_SCHEMA_FOR_GAME, {
         params: {
           key: apiKeyTest,
           appid,
-          l,
         },
       })
     })

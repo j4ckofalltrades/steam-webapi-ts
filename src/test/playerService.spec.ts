@@ -7,7 +7,7 @@ import {
   GET_STEAM_LEVEL,
   IS_PLAYING_SHARED_GAME,
 } from "../api/url"
-import { IPlayerService } from "../api/playerService"
+import { GetOwnedGamesParams, IPlayerService } from "../api/playerService"
 import {
   ownedGamesMock,
   playerBadgeProgressMock,
@@ -73,6 +73,28 @@ describe("IPlayerService", () => {
         },
       })
     })
+
+    it("should return games belonging to the user filtered by params", async () => {
+      const request: GetOwnedGamesParams = {
+        include_appinfo: true,
+        include_played_free_games: true,
+        appids_filter: [570, 571],
+      }
+
+      const response = await api.getOwnedGames(steamid, request)
+
+      expect(response).toEqual(ownedGamesMock)
+      expect(httpMock.get).toBeCalledWith(GET_OWNED_GAMES, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          include_appinfo: true,
+          include_played_free_games: true,
+          "appids_filter[0]": 570,
+          "appids_filter[1]": 571,
+        },
+      })
+    })
   })
 
   describe("getSteamLevel", () => {
@@ -116,7 +138,7 @@ describe("IPlayerService", () => {
       HttpClientMock.prototype.get.mockResolvedValue(playerBadgeProgressMock)
     })
 
-    it("should return the quests needed to get the specified badge", async () => {
+    it("should return the quests needed for all badges", async () => {
       const response = await api.getCommunityBadgeProgress(steamid)
 
       expect(response).toEqual(playerBadgeProgressMock)
@@ -124,6 +146,20 @@ describe("IPlayerService", () => {
         params: {
           key: apiKeyTest,
           steamid,
+        },
+      })
+    })
+
+    it("should return the quests needed to get the specified badge", async () => {
+      const badgeid = 123
+      const response = await api.getCommunityBadgeProgress(steamid, badgeid)
+
+      expect(response).toEqual(playerBadgeProgressMock)
+      expect(httpMock.get).toBeCalledWith(GET_COMMUNITY_BADGE_PROGRESS, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          badgeid,
         },
       })
     })
