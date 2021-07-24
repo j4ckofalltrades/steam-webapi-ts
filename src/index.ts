@@ -1,24 +1,22 @@
-import { SteamWebApi } from "./api/webApi"
-import { AppList, ISteamApps, UpToDateCheck } from "./api/appsApi"
-import { ISteamNews, NewsForAppParams } from "./api/newsApi"
+import { AppId, SteamId, SteamWebApi, WebApiKey } from "./core/steamWebApi"
 import {
   Badge,
   BadgeProgress,
   Game,
   GetOwnedGamesParams,
-  IPlayerService,
   OwnedGame,
   OwnedGames,
   PlayerBadges,
   RecentlyPlayedGames,
   SharedGameDetails,
   SteamLevel,
-} from "./api/playerService"
-import { AppId, SteamId, WebApiKey } from "./api/shared"
+} from "./wrapper/playerServiceWrapper.types"
+import { App, AppList, UpToDateCheck } from "./wrapper/steamAppsWrapper.types"
+import { AppNews, NewsForAppParams, NewsItem } from "./wrapper/steamNewsWrapper.types."
 import {
   Friend,
   FriendList,
-  ISteamUser,
+  FriendRelationship,
   PlayerBan,
   PlayerBans,
   PlayerSummaries,
@@ -26,7 +24,7 @@ import {
   UserGroup,
   UserGroups,
   VanityURLResolved,
-} from "./api/usersApi"
+} from "./wrapper/steamUserWrapper.types"
 import {
   AchievementPercentages,
   CurrentPlayerCount,
@@ -36,21 +34,29 @@ import {
   GameUserStats,
   GlobalAchievement,
   GlobalStatsForGame,
-  ISteamUserStats,
   PlayerAchievement,
   PlayerStats,
-} from "./api/userStatsApi"
-import { ISteamWebAPIUtil, ServerInfo, SupportedAPI } from "./api/webApiUtil"
+} from "./wrapper/steamUserStatsWrapper.types"
+import { ServerInfo, SupportedAPI } from "./wrapper/steamWebApiUtilWrapper.types"
+import { IPlayerServiceWrapper } from "./wrapper/playerServiceWrapper"
+import { ISteamAppsWrapper } from "./wrapper/steamAppsWrapper"
+import { ISteamNewsWrapper } from "./wrapper/steamNewsWrapper"
+import { ISteamUserWrapper } from "./wrapper/steamUserWrapper"
+import { ISteamUserStatsWrapper } from "./wrapper/steamUserStatsWrapper"
+import { ISteamWebAPIUtilWrapper } from "./wrapper/steamWebApiUtilWrapper"
 
 export type {
+  App,
   AppId,
   AppList,
+  AppNews,
   AchievementPercentages,
   Badge,
   BadgeProgress,
   CurrentPlayerCount,
   Friend,
   FriendList,
+  FriendRelationship,
   GameSchema,
   GameSchemaStats,
   GameSchemaAchievements,
@@ -66,6 +72,7 @@ export type {
   PlayerSummary,
   Game,
   GetOwnedGamesParams,
+  NewsItem,
   OwnedGame,
   OwnedGames,
   PlayerBadges,
@@ -81,4 +88,12 @@ export type {
   VanityURLResolved,
   WebApiKey,
 }
-export { IPlayerService, ISteamApps, ISteamNews, ISteamUser, ISteamUserStats, ISteamWebAPIUtil, SteamWebApi }
+export {
+  IPlayerServiceWrapper,
+  ISteamAppsWrapper,
+  ISteamNewsWrapper,
+  ISteamUserWrapper,
+  ISteamUserStatsWrapper,
+  ISteamWebAPIUtilWrapper,
+  SteamWebApi,
+}

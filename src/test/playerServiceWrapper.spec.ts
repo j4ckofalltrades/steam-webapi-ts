@@ -1,13 +1,13 @@
-import { HttpClient } from "../api/http"
+import { WebApiClient } from "../core/webApiClient"
 import {
   GET_BADGES,
   GET_COMMUNITY_BADGE_PROGRESS,
   GET_OWNED_GAMES,
   GET_RECENTLY_PLAYED_GAMES,
   GET_STEAM_LEVEL,
+  IPlayerServiceWrapper,
   IS_PLAYING_SHARED_GAME,
-} from "../api/url"
-import { GetOwnedGamesParams, IPlayerService } from "../api/playerService"
+} from "../wrapper/playerServiceWrapper"
 import {
   ownedGamesMock,
   playerBadgeProgressMock,
@@ -15,15 +15,16 @@ import {
   playerLevelMock,
   playingSharedGameMock,
   recentlyPlayedGamesMock,
-} from "../fixtures/playerServiceMock"
+} from "./playerServiceWrapper.mock"
+import { GetOwnedGamesParams } from "../wrapper/playerServiceWrapper.types"
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const apiKeyTest = "apiKey"
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new IPlayerService(apiKeyTest, httpMock)
+  const api = new IPlayerServiceWrapper(apiKeyTest, httpMock)
 
   return { httpMock, api }
 }
@@ -31,7 +32,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-describe("IPlayerService", () => {
+describe("IPlayerServiceWrapper", () => {
   const { httpMock, api } = setup()
   const steamid = "1"
 
@@ -92,6 +93,25 @@ describe("IPlayerService", () => {
           include_played_free_games: true,
           "appids_filter[0]": 570,
           "appids_filter[1]": 571,
+        },
+      })
+    })
+
+    it("should handle excluded optional params", async () => {
+      const request: GetOwnedGamesParams = {
+        include_appinfo: false,
+        include_played_free_games: true,
+      }
+
+      const response = await api.getOwnedGames(steamid, request)
+
+      expect(response).toEqual(ownedGamesMock)
+      expect(httpMock.get).toBeCalledWith(GET_OWNED_GAMES, {
+        params: {
+          key: apiKeyTest,
+          steamid,
+          include_appinfo: false,
+          include_played_free_games: true,
         },
       })
     })

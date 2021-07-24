@@ -1,6 +1,11 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
-  "include": ["src/index.ts", "src/api"],
+  "include": [
+    "src/index.ts",
+    "src/core",
+    "src/types",
+    "src/wrapper"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "moduleResolution": "node"

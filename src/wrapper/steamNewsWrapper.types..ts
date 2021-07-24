@@ -1,6 +1,4 @@
-import { httpClient, HttpClient } from "./http"
-import { AppId } from "./shared"
-import { GET_NEWS_FOR_APP } from "./url"
+import { AppId } from "../core/steamWebApi"
 
 /**
  * @property gid The unique identifier of the news item.
@@ -52,42 +50,4 @@ export type NewsForAppParams = {
   enddate?: number
   count?: number
   feeds?: string
-}
-
-/**
- * Methods relating to Steam News.
- */
-export class ISteamNews {
-  private readonly http: HttpClient
-
-  /* istanbul ignore next */
-  /**
-   * @param http HTTP client.
-   */
-  constructor(http: HttpClient = httpClient) {
-    this.http = http
-  }
-
-  /**
-   * Get the news for the specified app.
-   *
-   * @param appid AppID to retrieve news for.
-   * @param request (Optional) Additional request parameters.
-   */
-  async getNewsForApp(appid: AppId, request?: NewsForAppParams): Promise<AppNews> {
-    const maxlength = request?.maxlength !== undefined ? { maxlength: request.maxlength } : undefined
-    const enddate = request?.enddate !== undefined ? { enddate: request.enddate } : undefined
-    const count = request?.count !== undefined ? { count: request.count } : { count: 20 }
-    const feeds = request?.feeds !== undefined ? { feeds: request.feeds } : undefined
-
-    return await this.http.get<AppNews>(GET_NEWS_FOR_APP, {
-      params: {
-        appid,
-        ...maxlength,
-        ...enddate,
-        ...count,
-        ...feeds,
-      },
-    })
-  }
 }

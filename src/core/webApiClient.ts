@@ -1,17 +1,18 @@
 /* istanbul ignore file */
 
 import axios, { AxiosError, AxiosRequestConfig } from "axios"
-import { BASE_API_URL } from "./url"
+
+const BASE_API_URL = "https://api.steampowered.com"
 
 /**
  * @ignore
  */
-export class HttpClient {
-  private readonly http = axios.create({ baseURL: BASE_API_URL })
+export class WebApiClient {
+  private readonly httpClient = axios.create({ baseURL: BASE_API_URL })
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {
-      const response = await this.http.get<T>(url, config)
+      const response = await this.httpClient.get<T>(url, config)
       return response.data as T
     } catch (error) {
       const err = error as AxiosError
@@ -20,4 +21,4 @@ export class HttpClient {
   }
 }
 
-export const httpClient = new HttpClient()
+export const defaultWebApiClient = new WebApiClient()

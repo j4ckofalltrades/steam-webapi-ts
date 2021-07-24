@@ -6,7 +6,7 @@
 
 [![npm](https://nodei.co/npm/@j4ckofalltrades/steam-webapi-ts.png?compact=true)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
 
-Isomorphic wrapper for Steam's WebAPI in TypeScript.
+Isomorphic Steam WebAPI wrapper in TypeScript.
 
 ## Installation
 

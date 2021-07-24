@@ -1,27 +1,27 @@
-import { ISteamUser } from "../api/usersApi"
+import {
+  GET_FRIEND_LIST,
+  GET_PLAYER_BANS,
+  GET_PLAYER_SUMMARIES,
+  GET_USER_GROUP_LIST,
+  ISteamUserWrapper,
+  RESOLVE_VANITY_URL,
+} from "../wrapper/steamUserWrapper"
 import {
   friendsListMock,
   playerBansMock,
   playerSummariesMock,
   userGroupListMock,
   vanityURLResolvedMock,
-} from "../fixtures/userMock"
-import { HttpClient } from "../api/http"
-import {
-  GET_FRIEND_LIST,
-  GET_PLAYER_BANS,
-  GET_PLAYER_SUMMARIES,
-  GET_USER_GROUP_LIST,
-  RESOLVE_VANITY_URL,
-} from "../api/url"
+} from "./steamUserWrapper.mock"
+import { WebApiClient } from "../core/webApiClient"
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const apiKeyTest = "apiKey"
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new ISteamUser(apiKeyTest, httpMock)
+  const api = new ISteamUserWrapper(apiKeyTest, httpMock)
 
   return { httpMock, api }
 }
@@ -29,7 +29,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-describe("ISteamUser", () => {
+describe("ISteamUserWrapper", () => {
   const { httpMock, api } = setup()
 
   describe("getFriendsList", () => {

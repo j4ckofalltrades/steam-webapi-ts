@@ -1,14 +1,13 @@
-import { HttpClient } from "../api/http"
-import { ISteamApps } from "../api/appsApi"
-import { appListMock, upToDateCheckMock } from "../fixtures/appsMock"
-import { GET_APP_LIST, UP_TO_DATE_CHECK } from "../api/url"
+import { WebApiClient } from "../core/webApiClient"
+import { GET_APP_LIST, ISteamAppsWrapper, UP_TO_DATE_CHECK } from "../wrapper/steamAppsWrapper"
+import { appListMock, upToDateCheckMock } from "./steamAppsWrapper.mock"
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new ISteamApps(httpMock)
+  const api = new ISteamAppsWrapper(httpMock)
 
   return { httpMock, api }
 }
@@ -16,7 +15,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-describe("ISteamApps", () => {
+describe("ISteamAppsWrapper", () => {
   const { httpMock, api } = setup()
 
   describe("getAppList", () => {

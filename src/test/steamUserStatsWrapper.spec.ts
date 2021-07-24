@@ -1,4 +1,4 @@
-import { HttpClient } from "../api/http"
+import { WebApiClient } from "../core/webApiClient"
 import {
   currentPlayersMock,
   gameSchemaMock,
@@ -6,7 +6,7 @@ import {
   globalAchievementsMock,
   globalStatsForGameMock,
   playerAchievementsMock,
-} from "../fixtures/userStatsMock"
+} from "./steamUserStats.mock"
 import {
   GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
   GET_GLOBAL_STATS_FOR_GAME,
@@ -14,16 +14,16 @@ import {
   GET_PLAYER_ACHIEVEMENTS,
   GET_SCHEMA_FOR_GAME,
   GET_USER_STATS_FOR_GAME,
-} from "../api/url"
-import { ISteamUserStats } from "../api/userStatsApi"
+} from "../wrapper/steamUserStatsWrapper"
+import { ISteamUserStatsWrapper } from "../wrapper/steamUserStatsWrapper"
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const apiKeyTest = "apiKey"
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new ISteamUserStats(apiKeyTest, httpMock)
+  const api = new ISteamUserStatsWrapper(apiKeyTest, httpMock)
 
   return { httpMock, api }
 }

@@ -1,14 +1,14 @@
-import { HttpClient } from "../api/http"
-import { ISteamNews, NewsForAppParams } from "../api/newsApi"
-import { newsForAppMock } from "../fixtures/newsMock"
-import { GET_NEWS_FOR_APP } from "../api/url"
+import { WebApiClient } from "../core/webApiClient"
+import { GET_NEWS_FOR_APP, ISteamNewsWrapper } from "../wrapper/steamNewsWrapper"
+import { newsForAppMock } from "./steamNewsWrapper.mock"
+import { NewsForAppParams } from "../wrapper/steamNewsWrapper.types."
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new ISteamNews(httpMock)
+  const api = new ISteamNewsWrapper(httpMock)
 
   return { httpMock, api }
 }
@@ -16,7 +16,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-describe("ISteamNews", () => {
+describe("ISteamNewsWrapper", () => {
   const { httpMock, api } = setup()
   const appid = 570
 

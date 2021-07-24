@@ -1,14 +1,13 @@
-import { HttpClient } from "../api/http"
-import { ISteamWebAPIUtil } from "../api/webApiUtil"
-import { serverInfoMock, supportedAPIMock } from "../fixtures/webApiUtilMock"
-import { GET_SERVER_INFO, GET_SUPPORTED_API_LIST } from "../api/url"
+import { WebApiClient } from "../core/webApiClient"
+import { GET_SERVER_INFO, GET_SUPPORTED_API_LIST, ISteamWebAPIUtilWrapper } from "../wrapper/steamWebApiUtilWrapper"
+import { serverInfoMock, supportedAPIMock } from "./steamWebApiUtilWrapper.mock"
 
-jest.mock("../api/http")
+jest.mock("../core/webApiClient")
 
-const HttpClientMock = HttpClient as jest.MockedClass<typeof HttpClient>
+const HttpClientMock = WebApiClient as jest.MockedClass<typeof WebApiClient>
 const setup = () => {
   const httpMock = new HttpClientMock()
-  const api = new ISteamWebAPIUtil(httpMock)
+  const api = new ISteamWebAPIUtilWrapper(httpMock)
 
   return { httpMock, api }
 }
@@ -16,7 +15,7 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
-describe("ISteamWebAPIUtil", () => {
+describe("ISteamWebAPIUtilWrapper", () => {
   const { httpMock, api } = setup()
   const apiKey = "1"
 
@@ -38,7 +37,7 @@ describe("ISteamWebAPIUtil", () => {
       HttpClientMock.prototype.get.mockResolvedValue(supportedAPIMock)
     })
 
-    it("should return supported API list when requesting without an api key", async () => {
+    it("should return supported API list when requesting without an wrapper key", async () => {
       const response = await api.getSupportedAPIList()
 
       expect(response).toEqual(supportedAPIMock)
