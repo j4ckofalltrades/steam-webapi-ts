@@ -3,7 +3,6 @@
   "include": [
     "src/index.ts",
     "src/core",
-    "src/types",
     "src/wrapper"
   ],
   "compilerOptions": {

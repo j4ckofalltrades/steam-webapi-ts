@@ -39,8 +39,8 @@
     "webapi"
   ],
   "dependencies": {
-    "axios": "^0.21.1",
-    "typescript": "^4.3.4"
+    "axios": "0.21.1",
+    "typescript": "4.3.5"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
