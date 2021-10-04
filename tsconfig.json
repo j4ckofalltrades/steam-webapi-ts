@@ -12,8 +12,9 @@
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "includeVersion": true,
-    "name": "Steam WebAPI Documentation",
+    "name": "Steam WebAPI Docs",
     "out": "docs",
-    "theme": "minimal"
+    "theme": "default",
+    "darkHighlightTheme": "dark-plus"
   }
 }
