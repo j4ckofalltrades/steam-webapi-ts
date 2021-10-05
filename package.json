@@ -1,10 +1,31 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
-  "version": "1.0.0",
   "description": "Isomorphic Steam WebAPI wrapper in TypeScript.",
+  "version": "1.0.0",
+  "author": "Jordan Duabe <me@jduabe.dev> (https://jduabe.dev)",
+  "homepage": "https://github.com/j4ckofalltrades/steam-webapi-ts#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j4ckofalltrades/steam-webapi-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/j4ckofalltrades/steam-webapi-ts/issues"
+  },
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "types",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "cjs",
+    "esm",
+    "types"
+  ],
+  "keywords": [
+    "steam",
+    "webapi"
+  ],
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:esm": "tsc --module es2015 --target es5 --outDir esm",
@@ -17,27 +38,6 @@
     "typedoc": "typedoc",
     "prepare": "husky install"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/j4ckofalltrades/steam-webapi-ts.git"
-  },
-  "author": "Jordan Duabe <me@jduabe.dev> (https://jduabe.dev)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/j4ckofalltrades/steam-webapi-ts/issues"
-  },
-  "homepage": "https://github.com/j4ckofalltrades/steam-webapi-ts#readme",
-  "files": [
-    "README.md",
-    "LICENSE",
-    "cjs",
-    "esm",
-    "types"
-  ],
-  "keywords": [
-    "steam",
-    "webapi"
-  ],
   "dependencies": {
     "axios": "^0.21.4",
     "typescript": "^4.4.3"
@@ -93,15 +93,23 @@
       ]
     }
   },
-  "prettier": {
-    "printWidth": 120,
-    "semi": false,
-    "trailingComma": "all"
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/wrapper/*.ts"
+    ]
   },
   "lint-staged": {
     "*.ts": [
       "eslint --cache --fix",
       "prettier --write src"
     ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "trailingComma": "all"
   }
 }
