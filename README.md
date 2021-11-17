@@ -55,3 +55,7 @@ await usersApi.getPlayerSummaries(["steam_ids"])
 ## Docs
 
 For more detailed documentation see https://j4ckofalltrades.github.io/steam-webapi-ts.
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/bdef9b1141ca9a44c3596ead68fa815e0c7857f6.svg "Repobeats analytics image")
