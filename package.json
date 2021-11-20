@@ -1,7 +1,7 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
   "description": "Isomorphic Steam WebAPI wrapper in TypeScript.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jordan Duabe <me@jduabe.dev> (https://jduabe.dev)",
   "homepage": "https://github.com/j4ckofalltrades/steam-webapi-ts#readme",
   "license": "MIT",
@@ -39,22 +39,22 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "typescript": "^4.4.3"
+    "axios": "^0.24.0",
+    "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
-    "@types/jest": "^26.0.23",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
-    "@typescript-eslint/parser": "^4.32.0",
-    "eslint": "^7.32.0",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.1",
-    "jest": "^27.0.4",
-    "lint-staged": "^11.0.1",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.0.3",
     "prettier": "^2.4.1",
-    "ts-jest": "^27.0.3",
-    "typedoc": "^0.22.3"
+    "ts-jest": "^27.0.7",
+    "typedoc": "^0.22.9"
   },
   "eslintConfig": {
     "env": {
