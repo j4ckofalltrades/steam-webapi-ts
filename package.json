@@ -39,7 +39,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
