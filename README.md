@@ -27,7 +27,7 @@ then installing the package using `npm`.
 
 ### via CDN
 
-- jsDelivr [cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/](cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/)
+- jsDelivr [cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/](https://cdn.jsdelivr.net/npm/@j4ckofalltrades/steam-webapi-ts/)
 - unpkg [unpkg.com/browse/@j4ckofalltrades/steam-webapi-ts/](https://unpkg.com/browse/@j4ckofalltrades/steam-webapi-ts/)
 
 ## Usage
