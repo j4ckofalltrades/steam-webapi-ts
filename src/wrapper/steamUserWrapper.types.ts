@@ -1,7 +1,7 @@
 import { Result, SteamId } from "../core/steamWebApi"
 
 /**
- * @property steamid The user's 64 bit ID.
+ * @property steamid The user's 64-bit ID.
  * @property communityvisibilitystate An integer that describes the access setting of the profile.
  *           1 - Private, 2 - Friends only, 3 - Friends of Friends, 4 - Users Only, 5 Public.
  * @property profilestate If set to 1 the user has configured the profile.
@@ -15,12 +15,12 @@ import { Result, SteamId } from "../core/steamWebApi"
  *           0 - Offline, 1 - Online, 2 - Busy, 3 - Away, 4 - Snooze, 5 - looking to trade, 6 - looking to play.
  * @property commentpermission (Optional) If present the profile allows public comments.
  * @property realname (Optional) The user's real name.
- * @property primaryclanid (Optional) The 64 bit ID of the user's primary group.
+ * @property primaryclanid (Optional) The 64-bit ID of the user's primary group.
  * @property timecreated (Optional) A unix timestamp of the date the profile was created.
  * @property loccountrycode (Optional) ISO 3166 code of where the user is located.
  * @property locstatecode (Optional) Variable length code representing the state the user is located in.
  * @property loccityid (Optional) An integer ID internal to Steam representing the user's city.
- * @property gameid (Optional) If the user is in game this will be set to it's app ID as a string.
+ * @property gameid (Optional) If the user is in game this will be set to its app ID as a string.
  * @property gameextrainfo (Optional) The title of the game.
  * @property gameserverip (Optional) The server URL given as an IP address and port number separated by a colon,
  *           this will not be present or set to "0.0.0.0:0" if none is available.
@@ -50,7 +50,7 @@ export type PlayerSummary = {
 }
 
 /**
- * @property players A list of profile objects. Contained information varies depending on whether or not the user has
+ * @property players A list of profile objects. Contained information varies depending on whether the user has
  *           their profile set to Friends only or Private.
  */
 export type PlayerSummaries = {
@@ -62,7 +62,7 @@ export type PlayerSummaries = {
 export type FriendRelationship = "all" | "friend"
 
 /**
- * @property steamid The user's 64 bit ID.
+ * @property steamid The user's 64-bit ID.
  * @property relationship Role in relation to the given steamid.
  * @property friend_since A unix timestamp of when the friend was added to the list.
  */
@@ -84,9 +84,9 @@ export type FriendList = {
 }
 
 /**
- * @property SteamId A string containing the player's 64 bit ID.
- * @property CommunityBanned Boolean indicating whether or not the player is banned from Community.
- * @property VACBanned Boolean indicating whether or not the player has VAC bans on record.
+ * @property SteamId A string containing the player's 64-bit ID.
+ * @property CommunityBanned Boolean indicating whether the player is banned from Community.
+ * @property VACBanned Boolean indicating whether the player has VAC bans on record.
  * @property NumberOfGameBans Number of bans in games.
  * @property NumberOfVACBans Number of VAC bans.
  * @property DaysSinceLastBan Days since last ban.
@@ -130,7 +130,7 @@ export type UserGroups = {
 
 /**
  * @property success The status of the request. 1 if successful, 42 if there was no match.
- * @property steamid (Optional) The 64 bit Steam ID the vanity URL resolves to. Not returned on resolution failures.
+ * @property steamid (Optional) The 64-bit Steam ID the vanity URL resolves to. Not returned on resolution failures.
  * @property message (Optional) The message associated with the request status. Currently only used on resolution
  *           failures.
  */

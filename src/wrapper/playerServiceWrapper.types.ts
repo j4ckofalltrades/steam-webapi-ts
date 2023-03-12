@@ -4,16 +4,16 @@ import { AppId, SteamId } from "../core/steamWebApi"
  * @property appid An integer containing the program's ID.
  * @property name A string containing the program's publicly facing title.
  * @property playtime_2weeks An integer of the player's playtime in the past 2 weeks, denoted in minutes.
- * @property playtime_forever An integer of the the player's total playtime, denoted in minutes.
+ * @property playtime_forever An integer of the player's total playtime, denoted in minutes.
  * @property img_icon_url The program icon's file name, accessible at:
  *           http://media.steampowered.com/steamcommunity/public/images/apps/APPID/IMG_ICON_URL.jpg, replacing "APPID"
  *           and "IMG_ICON_URL" as necessary.
  * @property img_logo_url The program logo's file name, accessible at:
  *           http://media.steampowered.com/steamcommunity/public/images/apps/APPID/IMG_LOGO_URL.jpg, replacing "APPID"
  *           and "IMG_ICON_URL" as necessary.
- * @property playtime_windows_forever An integer of the the player's total playtime on Windows, denoted in minutes.
- * @property playtime_mac_forever An integer of the the player's total playtime on MacOS, denoted in minutes.
- * @property playtime_linux_forever An integer of the the player's total playtime on Linux, denoted in minutes.
+ * @property playtime_windows_forever An integer of the player's total playtime on Windows, denoted in minutes.
+ * @property playtime_mac_forever An integer of the player's total playtime on macOS, denoted in minutes.
+ * @property playtime_linux_forever An integer of the player's total playtime on Linux, denoted in minutes.
  */
 export type Game = {
   appid: string
@@ -82,7 +82,7 @@ export type SteamLevel = {
 }
 
 /**
- * @property badgeid Badge ID. Currently no official badge schema is available.
+ * @property badgeid Badge ID. Currently, no official badge schema is available.
  * @property appid (Optional) Provided if the badge relates to an app (trading cards).
  * @property completion_time Unix timestamp of when the steam user acquired the badge.
  * @property xp The experience this badge is worth, contributing toward the steam account's player_xp.

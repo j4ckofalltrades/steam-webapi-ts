@@ -35,7 +35,7 @@ export class ISteamUserWrapper {
   /**
    * User friend list.
    *
-   * @param steamid The 64 bit ID of the user to retrieve a list for.
+   * @param steamid The 64-bit ID of the user to retrieve a list for.
    * @param relationship Filter by a given role. Possible options are *all* (All roles), *friend*.
    * */
   async getFriendList(steamid: SteamId, relationship: FriendRelationship): Promise<FriendList> {
@@ -77,9 +77,9 @@ export class ISteamUserWrapper {
   }
 
   /**
-   * Lists Group ID(s) linked with 64 bit ID.
+   * Lists Group ID(s) linked with 64-bit ID.
    *
-   * @param steamid The 64 bit ID of the user.
+   * @param steamid The 64-bit ID of the user.
    */
   async getUserGroupList(steamid: SteamId): Promise<UserGroups> {
     return await this.webApiClient.get<UserGroups>(GET_USER_GROUP_LIST, {
@@ -91,7 +91,7 @@ export class ISteamUserWrapper {
   }
 
   /**
-   * Resolve vanity URL parts to a 64 bit ID.
+   * Resolve vanity URL parts to a 64-bit ID.
    *
    * @param vanityurl The user's vanity URL that you would like to retrieve a steam ID for,
    *        e.g. http://steamcommunity.com/id/gabelogannewell would use "gabelogannewell".
