@@ -6,7 +6,7 @@ export const GET_APP_LIST = "/ISteamApps/GetAppList/v2"
 export const UP_TO_DATE_CHECK = "/ISteamApps/UpToDateCheck/v1"
 
 /**
- * Methods relating to Steam Apps in general.
+ * Used to access data about applications on Steam.
  */
 export class ISteamAppsWrapper {
   private readonly webApiClient: WebApiClient

@@ -18,7 +18,7 @@ export const GET_COMMUNITY_BADGE_PROGRESS = "/IPlayerService/GetCommunityBadgePr
 export const IS_PLAYING_SHARED_GAME = "/IPlayerService/IsPlayingSharedGame/v1"
 
 /**
- * Methods relating to a Steam user's games.
+ * Provides additional methods for interacting with Steam Users.
  */
 export class IPlayerServiceWrapper {
   private readonly apiKey: WebApiKey

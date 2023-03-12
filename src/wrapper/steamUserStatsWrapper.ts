@@ -17,7 +17,7 @@ export const GET_SCHEMA_FOR_GAME = "/ISteamUserStats/GetSchemaForGame/v2"
 export const GET_USER_STATS_FOR_GAME = "/ISteamUserStats/GetUserStatsForGame/v2"
 
 /**
- * Methods relating to User stats.
+ * Used to access information about users.
  */
 export class ISteamUserStatsWrapper {
   private readonly apiKey: WebApiKey

@@ -6,7 +6,7 @@ export const GET_SERVER_INFO = "/ISteamWebAPIUtil/GetServerInfo/v1"
 export const GET_SUPPORTED_API_LIST = "/ISteamWebAPIUtil/GetSupportedAPIList/v1"
 
 /**
- * Methods relating to the WebAPI itself.
+ * Provides miscellaneous Web API related functionality through utility methods.
  */
 export class ISteamWebAPIUtilWrapper {
   private readonly webApiClient: WebApiClient

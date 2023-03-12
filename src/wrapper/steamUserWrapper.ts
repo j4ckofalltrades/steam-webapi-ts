@@ -16,7 +16,7 @@ export const GET_USER_GROUP_LIST = "ISteamUser/GetUserGroupList/v1"
 export const RESOLVE_VANITY_URL = "ISteamUser/ResolveVanityURL/v1"
 
 /**
- * Methods relating to Steam users.
+ * Used to access information and interact with users.
  */
 export class ISteamUserWrapper {
   private readonly apiKey: WebApiKey

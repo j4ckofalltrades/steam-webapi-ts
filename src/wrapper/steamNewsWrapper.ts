@@ -5,7 +5,7 @@ import { AppNews, NewsForAppParams } from "./steamNewsWrapper.types."
 export const GET_NEWS_FOR_APP = "/ISteamNews/GetNewsForApp/v2"
 
 /**
- * Methods relating to Steam News.
+ * Provides access to the Steam News functionality.
  */
 export class ISteamNewsWrapper {
   private readonly webApiClient: WebApiClient
