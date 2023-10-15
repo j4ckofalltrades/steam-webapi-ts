@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@j4ckofalltrades\/steam-webapi-ts)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/j4ckofalltrades/steam-webapi-ts/typescript)
+[![Docs](https://img.shields.io/badge/docs-green?link=j4ckofalltrades.github.io%2Fsteam--webapi--ts)](https://j4ckofalltrades.github.io/steam-webapi-ts)
 [![codecov](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts/branch/main/graph/badge.svg?token=LA1XCLYEP3)](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts)
 
 Isomorphic Steam WebAPI wrapper in TypeScript.
@@ -51,8 +52,6 @@ import { ISteamUser } from "@j4ckofalltrades/steam-webapi-ts"
 const usersApi = new ISteamUser("api_key")
 await usersApi.getPlayerSummaries(["steam_ids"])
 ```
-
-Check out the [docs](https://j4ckofalltrades.github.io/steam-webapi-ts) for a full list of available functions.
 
 ## Stats
 
