@@ -1,6 +1,5 @@
 import { WebApiClient } from "../core/webApiClient"
-import { GET_APP_LIST, ISteamAppsWrapper, UP_TO_DATE_CHECK } from "../wrapper/steamAppsWrapper"
-import { appListMock, upToDateCheckMock } from "./steamAppsWrapper.mock"
+import { AppList, GET_APP_LIST, ISteamAppsWrapper, UP_TO_DATE_CHECK, UpToDateCheck } from "../wrapper/steamAppsWrapper"
 
 jest.mock("../core/webApiClient")
 
@@ -14,6 +13,25 @@ const setup = () => {
 beforeEach(() => {
   jest.resetAllMocks()
 })
+
+const appListMock: AppList = {
+  applist: {
+    apps: [
+      {
+        appid: 570,
+        name: "DotA 2",
+      },
+    ],
+  },
+}
+
+const upToDateCheckMock: UpToDateCheck = {
+  response: {
+    success: true,
+    up_to_date: true,
+    version_is_listable: true,
+  },
+}
 
 describe("ISteamAppsWrapper", () => {
   const { httpMock, api } = setup()

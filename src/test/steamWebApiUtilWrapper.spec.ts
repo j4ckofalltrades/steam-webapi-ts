@@ -1,6 +1,11 @@
 import { WebApiClient } from "../core/webApiClient"
-import { GET_SERVER_INFO, GET_SUPPORTED_API_LIST, ISteamWebAPIUtilWrapper } from "../wrapper/steamWebApiUtilWrapper"
-import { serverInfoMock, supportedAPIMock } from "./steamWebApiUtilWrapper.mock"
+import {
+  GET_SERVER_INFO,
+  GET_SUPPORTED_API_LIST,
+  ISteamWebAPIUtilWrapper,
+  ServerInfo,
+  SupportedAPI,
+} from "../wrapper/steamWebApiUtilWrapper"
 
 jest.mock("../core/webApiClient")
 
@@ -14,6 +19,44 @@ const setup = () => {
 beforeEach(() => {
   jest.resetAllMocks()
 })
+
+const serverInfoMock: ServerInfo = {
+  servertime: 1625396869,
+  servertimestring: "Sun Jul  4 04:07:49 2021",
+}
+
+const supportedAPIMock: SupportedAPI = {
+  apilist: [
+    {
+      interfaces: [
+        {
+          name: "ISteamWebAPIUtil",
+          methods: [
+            {
+              name: "GetServerInfo",
+              version: 1,
+              httpmethod: "GET",
+              parameters: [],
+            },
+            {
+              name: "GetSupportedAPIList",
+              version: 1,
+              httpmethod: "GET",
+              parameters: [
+                {
+                  name: "key",
+                  type: "string",
+                  optional: true,
+                  description: "access key",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
 
 describe("ISteamWebAPIUtilWrapper", () => {
   const { httpMock, api } = setup()

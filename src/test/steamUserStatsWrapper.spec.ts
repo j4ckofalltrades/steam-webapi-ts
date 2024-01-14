@@ -1,21 +1,19 @@
 import { WebApiClient } from "../core/webApiClient"
 import {
-  currentPlayersMock,
-  gameSchemaMock,
-  gameUserStatsMock,
-  globalAchievementsMock,
-  globalStatsForGameMock,
-  playerAchievementsMock,
-} from "./steamUserStats.mock"
-import {
+  AchievementPercentages,
+  CurrentPlayerCount,
+  GameSchema,
+  GameUserStats,
   GET_GLOBAL_ACHIEVEMENT_PERCENTAGES_FOR_APP,
   GET_GLOBAL_STATS_FOR_GAME,
   GET_NUMBER_OF_CURRENT_PLAYERS,
   GET_PLAYER_ACHIEVEMENTS,
   GET_SCHEMA_FOR_GAME,
   GET_USER_STATS_FOR_GAME,
+  GlobalStatsForGame,
+  ISteamUserStatsWrapper,
+  PlayerStats,
 } from "../wrapper/steamUserStatsWrapper"
-import { ISteamUserStatsWrapper } from "../wrapper/steamUserStatsWrapper"
 
 jest.mock("../core/webApiClient")
 
@@ -30,6 +28,111 @@ const setup = () => {
 beforeEach(() => {
   jest.resetAllMocks()
 })
+
+const currentPlayersMock: CurrentPlayerCount = {
+  response: {
+    player_count: 573500,
+    result: 1,
+  },
+}
+
+const gameSchemaMock: GameSchema = {
+  game: {
+    gameName: "[STAGING] DotA 2",
+    gameVersion: "11",
+    availableGameStats: {
+      achievements: [],
+      stats: [
+        {
+          name: "DOTA_SHOW_FULL_UI",
+          defaultvalue: 0,
+          displayName: "",
+        },
+      ],
+    },
+  },
+}
+
+const gameUserStatsMock: GameUserStats = {
+  steamid: "123456789010",
+  appid: 570,
+  achievements: [
+    {
+      name: "ACH_GRAB_PLAYER",
+      achieved: 1,
+    },
+    {
+      name: "ACH_QUALIFY_1_ROUND",
+      achieved: 1,
+    },
+  ],
+}
+
+const globalAchievementsMock: AchievementPercentages = {
+  achievementpercentages: {
+    achievements: [
+      {
+        name: "CHARMED",
+        percent: 75,
+      },
+      {
+        name: "FK_DEFEAT",
+        percent: 68.9000015258789063,
+      },
+      {
+        name: "HORNET_1",
+        percent: 59.9000015258789063,
+      },
+      {
+        name: "STAG_STATION_HALF",
+        percent: 45.7000007629394531,
+      },
+      {
+        name: "PROTECTED",
+        percent: 44.2000007629394531,
+      },
+    ],
+  },
+}
+
+const playerAchievementsMock: PlayerStats = {
+  steamID: "12345678910",
+  gameName: "Hollow Knight",
+  achievements: [
+    {
+      apiname: "CHARMED",
+      achieved: 0,
+      unlocktime: 0,
+    },
+    {
+      apiname: "ENCHANTED",
+      achieved: 0,
+      unlocktime: 0,
+    },
+    {
+      apiname: "BLESSED",
+      achieved: 0,
+      unlocktime: 0,
+    },
+  ],
+  success: true,
+}
+
+const globalStatsForGameMock: GlobalStatsForGame = {
+  response: {
+    result: 1,
+    globalstats: [
+      {
+        stat_name_0: {
+          total: 123,
+        },
+        stat_name_1: {
+          total: 345,
+        },
+      },
+    ],
+  },
+}
 
 describe("ISteamUserStats", () => {
   const { httpMock, api } = setup()

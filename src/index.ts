@@ -4,19 +4,21 @@ import {
   BadgeProgress,
   Game,
   GetOwnedGamesParams,
+  IPlayerServiceWrapper,
   OwnedGame,
   OwnedGames,
   PlayerBadges,
   RecentlyPlayedGames,
   SharedGameDetails,
   SteamLevel,
-} from "./wrapper/playerServiceWrapper.types"
-import { App, AppList, UpToDateCheck } from "./wrapper/steamAppsWrapper.types"
-import { AppNews, NewsForAppParams, NewsItem } from "./wrapper/steamNewsWrapper.types."
+} from "./wrapper/playerServiceWrapper"
+import { App, AppList, ISteamAppsWrapper, UpToDateCheck } from "./wrapper/steamAppsWrapper"
+import { AppNews, ISteamNewsWrapper, NewsForAppParams, NewsItem } from "./wrapper/steamNewsWrapper"
 import {
   Friend,
   FriendList,
   FriendRelationship,
+  ISteamUserWrapper,
   PlayerBan,
   PlayerBans,
   PlayerSummaries,
@@ -24,7 +26,7 @@ import {
   UserGroup,
   UserGroups,
   VanityURLResolved,
-} from "./wrapper/steamUserWrapper.types"
+} from "./wrapper/steamUserWrapper"
 import {
   AchievementPercentages,
   CurrentPlayerCount,
@@ -34,16 +36,11 @@ import {
   GameUserStats,
   GlobalAchievement,
   GlobalStatsForGame,
+  ISteamUserStatsWrapper,
   PlayerAchievement,
   PlayerStats,
-} from "./wrapper/steamUserStatsWrapper.types"
-import { ServerInfo, SupportedAPI } from "./wrapper/steamWebApiUtilWrapper.types"
-import { IPlayerServiceWrapper } from "./wrapper/playerServiceWrapper"
-import { ISteamAppsWrapper } from "./wrapper/steamAppsWrapper"
-import { ISteamNewsWrapper } from "./wrapper/steamNewsWrapper"
-import { ISteamUserWrapper } from "./wrapper/steamUserWrapper"
-import { ISteamUserStatsWrapper } from "./wrapper/steamUserStatsWrapper"
-import { ISteamWebAPIUtilWrapper } from "./wrapper/steamWebApiUtilWrapper"
+} from "./wrapper/steamUserStatsWrapper"
+import { ISteamWebAPIUtilWrapper, ServerInfo, SupportedAPI } from "./wrapper/steamWebApiUtilWrapper"
 
 export type {
   App,

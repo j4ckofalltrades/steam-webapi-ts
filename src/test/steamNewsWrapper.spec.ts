@@ -1,7 +1,5 @@
 import { WebApiClient } from "../core/webApiClient"
-import { GET_NEWS_FOR_APP, ISteamNewsWrapper } from "../wrapper/steamNewsWrapper"
-import { newsForAppMock } from "./steamNewsWrapper.mock"
-import { NewsForAppParams } from "../wrapper/steamNewsWrapper.types."
+import { AppNews, GET_NEWS_FOR_APP, ISteamNewsWrapper, NewsForAppParams } from "../wrapper/steamNewsWrapper"
 
 jest.mock("../core/webApiClient")
 
@@ -15,6 +13,29 @@ const setup = () => {
 beforeEach(() => {
   jest.resetAllMocks()
 })
+
+const newsForAppMock: AppNews = {
+  appnews: {
+    appid: 570,
+    newsitems: [
+      {
+        gid: "4032392655093925419",
+        title: "Dota 2 update for 2 July 2021",
+        url: "https://steamstore-a.akamaihd.net/news/externalpost/SteamDB/4032392655093925419",
+        is_external_url: true,
+        author: "SteamDB",
+        // prettier-ignore
+        contents: "<a href=\"https://steamdb.info/patchnotes/6972159/?utm_source=Steam&utm_medium=Steam&utm_campaign=SteamRSS\">" +
+          "<img src=\"https://steamdb.info/patchnotes/6972159.png\"><br>Read patchnotes on SteamDB...</a>",
+        feedlabel: "SteamDB",
+        date: 1625254529,
+        feedname: "SteamDB",
+        feed_type: 0,
+        appid: 570,
+      },
+    ],
+  },
+}
 
 describe("ISteamNewsWrapper", () => {
   const { httpMock, api } = setup()
