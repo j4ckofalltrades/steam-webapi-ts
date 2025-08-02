@@ -1,7 +1,7 @@
 {
   "name": "@j4ckofalltrades/steam-webapi-ts",
   "description": "Isomorphic Steam WebAPI wrapper in TypeScript",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Jordan Duabe <me@jduabe.dev> (https://jduabe.dev)",
   "homepage": "https://github.com/j4ckofalltrades/steam-webapi-ts#readme",
   "license": "MIT",
