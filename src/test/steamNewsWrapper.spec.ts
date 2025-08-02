@@ -49,7 +49,7 @@ describe("ISteamNewsWrapper", () => {
     it("should return news for app", async () => {
       const response = await api.getNewsForApp(appid)
       expect(response).toEqual(newsForAppMock)
-      expect(httpMock.get).toBeCalledWith(GET_NEWS_FOR_APP, {
+      expect(httpMock.get).toHaveBeenCalledWith(GET_NEWS_FOR_APP, {
         params: {
           appid,
           // default number of posts to retrieve
@@ -68,7 +68,7 @@ describe("ISteamNewsWrapper", () => {
 
       const response = await api.getNewsForApp(appid, newsForAppParams)
       expect(response).toEqual(newsForAppMock)
-      expect(httpMock.get).toBeCalledWith(GET_NEWS_FOR_APP, {
+      expect(httpMock.get).toHaveBeenCalledWith(GET_NEWS_FOR_APP, {
         params: {
           appid,
           ...newsForAppParams,

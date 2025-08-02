@@ -71,7 +71,7 @@ describe("ISteamWebAPIUtilWrapper", () => {
       const response = await api.getServerInfo()
 
       expect(response).toEqual(serverInfoMock)
-      expect(httpMock.get).toBeCalledWith(GET_SERVER_INFO)
+      expect(httpMock.get).toHaveBeenCalledWith(GET_SERVER_INFO)
     })
   })
 
@@ -84,14 +84,14 @@ describe("ISteamWebAPIUtilWrapper", () => {
       const response = await api.getSupportedAPIList()
 
       expect(response).toEqual(supportedAPIMock)
-      expect(httpMock.get).toBeCalledWith(GET_SUPPORTED_API_LIST, { params: {} })
+      expect(httpMock.get).toHaveBeenCalledWith(GET_SUPPORTED_API_LIST, { params: {} })
     })
 
     it("should return supported API list", async () => {
       const response = await api.getSupportedAPIList(apiKey)
 
       expect(response).toEqual(supportedAPIMock)
-      expect(httpMock.get).toBeCalledWith(GET_SUPPORTED_API_LIST, {
+      expect(httpMock.get).toHaveBeenCalledWith(GET_SUPPORTED_API_LIST, {
         params: {
           key: apiKey,
         },

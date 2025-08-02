@@ -45,7 +45,7 @@ describe("ISteamAppsWrapper", () => {
       const response = await api.getAppList()
 
       expect(response).toEqual(appListMock)
-      expect(httpMock.get).toBeCalledWith(GET_APP_LIST)
+      expect(httpMock.get).toHaveBeenCalledWith(GET_APP_LIST)
     })
   })
 
@@ -60,7 +60,7 @@ describe("ISteamAppsWrapper", () => {
       const response = await api.upToDateCheck(appid, version)
 
       expect(response).toEqual(upToDateCheckMock)
-      expect(httpMock.get).toBeCalledWith(UP_TO_DATE_CHECK, {
+      expect(httpMock.get).toHaveBeenCalledWith(UP_TO_DATE_CHECK, {
         params: {
           appid,
           version,
