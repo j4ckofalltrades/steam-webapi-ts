@@ -1,7 +1,7 @@
 ![steam-webapi-ts_image](https://res.cloudinary.com/j4ckofalltrades/image/upload/v1697278937/foss/gh-social-icons/steam-webapi-ts_airt7u.png)
 
 [![npm](https://img.shields.io/npm/v/@j4ckofalltrades\/steam-webapi-ts)](https://npmjs.com/package/@j4ckofalltrades/steam-webapi-ts)
-[![Docs](https://img.shields.io/badge/docs-v1.2.1-green?link=j4ckofalltrades.github.io%2Fsteam--webapi--ts)](https://j4ckofalltrades.github.io/steam-webapi-ts)
+[![Docs](https://img.shields.io/badge/docs-v1.2.2-green?link=j4ckofalltrades.github.io%2Fsteam--webapi--ts)](https://j4ckofalltrades.github.io/steam-webapi-ts)
 [![codecov](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts/branch/main/graph/badge.svg?token=LA1XCLYEP3)](https://codecov.io/gh/j4ckofalltrades/steam-webapi-ts)
 
 Isomorphic Steam WebAPI wrapper in TypeScript.
