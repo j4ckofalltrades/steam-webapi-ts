@@ -56,6 +56,12 @@
     "typedoc": "^0.28.9",
     "typescript": "^5.3.2"
   },
+  "overrides": {
+    "brace-expansion": "^2.1.2",
+    "js-yaml": "^4.3.0",
+    "linkify-it": "^5.0.2",
+    "@babel/core": "^7.29.6"
+  },
   "eslintConfig": {
     "env": {
       "browser": true,
